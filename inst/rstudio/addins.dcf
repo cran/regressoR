@@ -1,0 +1,4 @@
+Name: RegressoR
+Description: Shiny RegressoR
+Binding: init_regressor
+Interactive: true

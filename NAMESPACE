@@ -1,0 +1,22 @@
+export(init_regressor, exe, extract_code, as_string_c, gg_color_hue, plot_real_prediction, general_indices, 
+       combine_names, colnames_empty, var_numerical,var_categorical, summary_indices, disjunctive_data, 
+       error_plot, render_index_table, translate, error_variables, tb_predic, render_table_data,models_mode, 
+       comparative_table, validate_pn_data, new_col, get_env_report, clean_report, get_report, new_report,
+       insert_report, remove_report_elem, new_section_report, word_report, disp_models, code_load, code_NA,
+       code_transf, code_deactivate, partition_code, code_summary, normal_default, fisher_calc, default_calc_normal,
+       default_disp, def_code_cat, def_code_num, pairs_power, categorical_distribution, numerical_distribution, 
+       numerical_summary, cor_model, correlations_plot, rl_model, rl_prediction, rl_coeff, rlr_model, coef_lambda, plot_coef_lambda, 
+       rlr_prediction, rlr_type, kkn_model, kkn_prediction, svm_model, svm_prediction, dt_model, dt_prediction, dt_plot, 
+       rf_model, rf_prediction, importance_plot_rf,boosting_model, boosting_prediction, boosting_importance_plot, 
+       calibrate_boosting, nn_model, nn_prediction, nn_plot, labelInput, rd_model, rd_prediction, plot_RMSE, plot_pred_rd,
+       rd_type, plot_var_pred_rd, categorical_summary, options_regressor)
+
+import(ggplot2)
+import(shiny)
+importFrom(dplyr,"%>%")
+importFrom("shinyAce", "aceEditor")
+importFrom("grDevices", "hcl", "rgb")
+importFrom("utils", "head")
+importFrom("stats", "cor", "quantile", "sd", "runif", "median", "lm")
+importFrom("htmltools", "withTags")
+importFrom("graphics", "axis", "boxplot", "hist", "par")
