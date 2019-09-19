@@ -31,7 +31,6 @@
   display:none;
 }
 
-
 #rfPrediTable, #knnPrediTable, #svmPrediTable, #dtPrediTable, #rfPrediTable, 
 #boostingPrediTable, #nnPrediTable, #rlPrediTable, #rlrPrediTable, #rlCoefTable,
 #rdPrediTable{
@@ -111,7 +110,6 @@ table.spacing-xs tr th{
     background-color: #CBB051;
 }
 
-
 .skin-blue .main-header .navbar {
   background-color: #777777;
 }
@@ -132,7 +130,6 @@ table.spacing-xs tr th{
 #plot-container {
   position: relative;
 }
-
 
 #loading-spinner {
   position: absolute;
@@ -338,7 +335,6 @@ input[type="checkbox"]:hover:before {
   padding-right: 8px;
   margin-top: 0px;
 }
-
 
 #txtpca {
   height: 70vh;

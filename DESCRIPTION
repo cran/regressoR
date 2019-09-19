@@ -1,7 +1,7 @@
 Title: Regression Data Analysis System
 Package: regressoR
 Type: Package
-Version: 1.1.7
+Version: 1.1.8
 Authors@R: c(
     person("Oldemar", "Rodriguez R.", email = "oldemar.rodriguez@ucr.ac.cr", role = c("aut","cre")),
     person("Andres", "Navarro D.", role = c("ctb","prg")),
@@ -25,10 +25,10 @@ LazyData: true
 URL: http://www.promidat.com
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2019-06-05 14:58:05 UTC; promidat04
+Packaged: 2019-09-18 20:08:06 UTC; promidat04
 Author: Oldemar Rodriguez R. [aut, cre],
   Andres Navarro D. [ctb, prg],
   Diego Jimenez A. [ctb, prg]
 Maintainer: Oldemar Rodriguez R. <oldemar.rodriguez@ucr.ac.cr>
 Repository: CRAN
-Date/Publication: 2019-06-11 17:20:04 UTC
+Date/Publication: 2019-09-19 04:30:03 UTC

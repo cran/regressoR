@@ -747,7 +747,7 @@ generate.rf.panel <- tabPanel(title = labelInput("generatem"),value = "tabRfMode
                              verbatimTextOutput("txtRf"))
 
 plot.rf <- tabPanel(title = labelInput("varImp"), value = "tabRfImp",
-                    plotOutput('plot.rf', height = "55vh"))
+                    plotOutput('plot.rf', height = "70vh"))
 
 prediction.rf.panel <- tabPanel(title = labelInput("predm"), value = "tabRfPred",
                                 DT::dataTableOutput("rfPrediTable"))
@@ -810,7 +810,7 @@ generate.b.panel <- tabPanel(title = labelInput("generatem"), value = "tabBModel
                               verbatimTextOutput("txtBoosting"))
 
 plot.boosting.import <- tabPanel(title = labelInput("varImp"), value = "tabBImp",
-                    plotOutput('plot.boosting.import', height = "55vh"))
+                    plotOutput('plot.boosting.import', height = "70vh"))
 
 prediction.b.panel <- tabPanel(title = labelInput("predm"), value = "tabBPred",
                                  DT::dataTableOutput("boostingPrediTable"))
@@ -1029,6 +1029,7 @@ options.model <- list(selectInput(inputId = "sel.predic.var.nuevos", label = lab
                         radioGroupButtons("selectModelsPred", labelInput("selectMod"), 
                                           list("<span data-id=\"rll\"></span>" = "rl",
                                                "<span data-id=\"rlr\"></span>" = "rlr",
+                                               "<span data-id=\"rd\"></span>" = "rd",
                                                "<span data-id=\"knnl\"></span>" = "knn",
                                                "<span data-id=\"dtl\"></span>" = "dt",
                                                "<span data-id=\"rfl\"></span>" = "rf",
@@ -1112,7 +1113,7 @@ page.info <- tabItem(tabName = "acercaDe",
                        infoBoxPROMiDAT(labelInput("copyright"), "PROMiDAT S.A.", icon = icon("copyright")),
                        infoBoxPROMiDAT(labelInput("info"), tags$a( href="https://www.promidat.com/", style = "color:white;",
                                                                    target = "_blank", "https://www.promidat.com"), icon = icon("info")),
-                       infoBoxPROMiDAT(labelInput("version"), "1.1.7", icon = icon("file-code-o")))
+                       infoBoxPROMiDAT(labelInput("version"), "1.1.8", icon = icon("file-code-o")))
 
 # FULL PAGE ---------------------------------------------------------------------------------------------------------------
 

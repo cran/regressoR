@@ -351,7 +351,7 @@ shinyServer(function(input, output, session){
       deafult_codigo_rf(rf.def = TRUE)
       deault_codigo_boosting()
       default_codigo_nn()
-      
+
     } else {
       showNotification(translate("tieneSVP"), duration = 15, type = "error")
     }
@@ -793,9 +793,8 @@ shinyServer(function(input, output, session){
       output$txtRl <- renderPrint(print(summary(modelo.rl)))
       
       insert_report("modelo.rl","Generaci\u00F3n del Modelo Regresi\u00F3n Lineal", cod.rl.modelo,"\nsummary(modelo.rl)")
-      
       coefficients_rl()
-      
+
       nombres.modelos <<- c(nombres.modelos, "modelo.rl")
     },
     error = function(e) { # Regresamos al estado inicial y mostramos un error
@@ -1089,7 +1088,6 @@ shinyServer(function(input, output, session){
                       cod.rlr.ind, "\nkt(general_indices(datos.prueba[,'",variable.predecir,"'], prediccion.rlr.",rlr_type(),"))\n",
                       "indices.rlr <- general_indices(datos.prueba[,'",variable.predecir,"'], prediccion.rlr.",rlr_type(),")\n",
                       "IndicesM[['rlr-",rlr_type(),"']] <- indices.rlr")
-
         
         df <- as.data.frame(indices.rlr)
         colnames(df) <- c(translate("RMSE"), translate("MAE"), translate("ER"), translate("correlacion"))
@@ -2577,6 +2575,7 @@ shinyServer(function(input, output, session){
     }
   })
   
+
   # When learning data is loaded
   observeEvent(input$loadButtonNPred,{
     codigo.carga <- code_load(row.names = input$rownameNPred,
@@ -2757,7 +2756,7 @@ shinyServer(function(input, output, session){
   observeEvent(input$PredNuevosBttnModelo,{
     variable.predecir.pn <<- input$sel.predic.var.nuevos
     modelo.seleccionado.pn  <<- input$selectModelsPred
-    
+
     codigo <- switch(input$selectModelsPred,
                      rl   = rl_model(data = "datos.aprendizaje.completos", 
                                      variable.pred = variable.predecir.pn, 

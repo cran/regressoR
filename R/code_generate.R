@@ -92,7 +92,7 @@ code_transf <- function(variable, new.type, d.o = "datos.originales", d="datos")
       return(paste0(d,"[, '", variable, "'] <- as.numeric(",d,"[, '", variable, "'])"))
     }
   } else {
-    es.factor <- ifelse( eval(parse(text = paste0("class(",d.o,"[, variable]) %in% c('numeric', 'integer')"))),
+    es.factor <- ifelse(exe("class(",d.o,"[, '",variable,"']) %in% c('numeric', 'integer')"),
                          paste0(d,"[, '", variable, "'] <- as.factor(",d,"[, '", variable, "']) \n"), "")
     return(paste0(es.factor, d, " <- disjunctive_data(",d,", '", variable,"')"))
   }
