@@ -4,8 +4,11 @@
 \alias{dt_prediction}
 \title{dt_prediction}
 \usage{
-dt_prediction(data = "datos.prueba", model.var = "modelo.dt",
-  pred.var = "prediccion.dt")
+dt_prediction(
+  data = "datos.prueba",
+  model.var = "modelo.dt",
+  pred.var = "prediccion.dt"
+)
 }
 \arguments{
 \item{data}{the name of the test data.}

@@ -4,9 +4,12 @@
 \alias{tabsOptions}
 \title{tabsOptions}
 \usage{
-tabsOptions(buttons = list(icon("gear"), icon("terminal")),
-  widths = c(50, 100), heights = c(100, 50), tabs.content = list("",
-  ""))
+tabsOptions(
+  buttons = list(icon("gear"), icon("terminal")),
+  widths = c(50, 100),
+  heights = c(100, 50),
+  tabs.content = list("", "")
+)
 }
 \arguments{
 \item{buttons}{vector or list with icons of each tab.}

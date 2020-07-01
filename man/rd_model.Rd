@@ -4,9 +4,14 @@
 \alias{rd_model}
 \title{rd_model}
 \usage{
-rd_model(data = "datos.aprendizaje", variable.pred = NULL,
-  model.var = "modelo.rd", n.comp = "n.comp.rd",
-  mode = options_regressor("rd.mode"), scale = TRUE)
+rd_model(
+  data = "datos.aprendizaje",
+  variable.pred = NULL,
+  model.var = "modelo.rd",
+  n.comp = "n.comp.rd",
+  mode = options_regressor("rd.mode"),
+  scale = TRUE
+)
 }
 \arguments{
 \item{data}{the name of the learning data.}
@@ -31,7 +36,4 @@ x <- rd_model('iris', 'Petal.Length')
 exe(x)
 print(modelo.rd)
 
-}
-\seealso{
-\code{\link[pls]{pcr}}, \code{\link[pls]{plsr}}
 }

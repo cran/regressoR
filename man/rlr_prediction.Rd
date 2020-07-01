@@ -4,9 +4,15 @@
 \alias{rlr_prediction}
 \title{rlr_prediction}
 \usage{
-rlr_prediction(data.a = "datos.aprendizaje", data.p = "datos.prueba",
-  variable.pred = NULL, model.var = "modelo.rlr",
-  pred.var = "prediccion.rlr", lambda = NULL, cv.var = "cv.glm")
+rlr_prediction(
+  data.a = "datos.aprendizaje",
+  data.p = "datos.prueba",
+  variable.pred = NULL,
+  model.var = "modelo.rlr",
+  pred.var = "prediccion.rlr",
+  lambda = NULL,
+  cv.var = "cv.glm"
+)
 }
 \arguments{
 \item{data.a}{the name of the learning data.}

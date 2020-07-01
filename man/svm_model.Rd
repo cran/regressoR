@@ -4,8 +4,13 @@
 \alias{svm_model}
 \title{svm_model}
 \usage{
-svm_model(data = "datos.aprendizaje", variable.pred = NULL,
-  model.var = "modelo.svm", scale = TRUE, kernel = "linear")
+svm_model(
+  data = "datos.aprendizaje",
+  variable.pred = NULL,
+  model.var = "modelo.svm",
+  scale = TRUE,
+  kernel = "linear"
+)
 }
 \arguments{
 \item{data}{the name of the learning data.}

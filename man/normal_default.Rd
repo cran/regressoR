@@ -4,8 +4,12 @@
 \alias{normal_default}
 \title{normal_default}
 \usage{
-normal_default(data = "datos", vars = NULL, color = "#00FF22AA",
-  labelcurva = "Curva Normal")
+normal_default(
+  data = "datos",
+  vars = NULL,
+  color = "#00FF22AA",
+  labelcurva = "Curva Normal"
+)
 }
 \arguments{
 \item{data}{the name of the current data.}

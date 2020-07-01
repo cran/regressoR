@@ -4,8 +4,12 @@
 \alias{default_calc_normal}
 \title{default_calc_normal}
 \usage{
-default_calc_normal(data = "datos", label.yes = "Positiva",
-  label.no = "Negativa", label.without = "Sin Asimetría")
+default_calc_normal(
+  data = "datos",
+  label.yes = "Positiva",
+  label.no = "Negativa",
+  label.without = "Sin Asimetría"
+)
 }
 \arguments{
 \item{data}{the name of the current data.}

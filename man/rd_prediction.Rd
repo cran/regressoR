@@ -4,8 +4,13 @@
 \alias{rd_prediction}
 \title{rd_prediction}
 \usage{
-rd_prediction(data = "datos.prueba", model.var = "modelo.svm",
-  pred.var = "prediccion.rd", n.comp = "n.comp.rd", ncomp = NULL)
+rd_prediction(
+  data = "datos.prueba",
+  model.var = "modelo.svm",
+  pred.var = "prediccion.rd",
+  n.comp = "n.comp.rd",
+  ncomp = NULL
+)
 }
 \arguments{
 \item{data}{the name of the test data.}

@@ -4,8 +4,13 @@
 \alias{coef_lambda}
 \title{coef_lambda}
 \usage{
-coef_lambda(data = "datos.aprendizaje", variable.pred = NULL,
-  model.var = "modelo.rlr", lambda = NULL, cv.var = "cv.glm")
+coef_lambda(
+  data = "datos.aprendizaje",
+  variable.pred = NULL,
+  model.var = "modelo.rlr",
+  lambda = NULL,
+  cv.var = "cv.glm"
+)
 }
 \arguments{
 \item{data}{the name of the learning data.}

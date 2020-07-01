@@ -4,8 +4,13 @@
 \alias{rf_model}
 \title{rf_model}
 \usage{
-rf_model(data = "datos.aprendizaje", variable.pred = NULL,
-  model.var = "modelo.rf", ntree = 500, mtry = 1)
+rf_model(
+  data = "datos.aprendizaje",
+  variable.pred = NULL,
+  model.var = "modelo.rf",
+  ntree = 500,
+  mtry = 1
+)
 }
 \arguments{
 \item{data}{the name of the learning data.}

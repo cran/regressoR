@@ -4,8 +4,11 @@
 \alias{rl_model}
 \title{rl_model}
 \usage{
-rl_model(data = "datos.aprendizaje", variable.pred = NULL,
-  model.var = "modelo.rl")
+rl_model(
+  data = "datos.aprendizaje",
+  variable.pred = NULL,
+  model.var = "modelo.rl"
+)
 }
 \arguments{
 \item{data}{the name of the learning data.}

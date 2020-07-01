@@ -4,9 +4,14 @@
 \alias{boosting_model}
 \title{boosting_model}
 \usage{
-boosting_model(data = "datos.aprendizaje", variable.pred = NULL,
-  model.var = "modelo.boosting", n.trees = 50,
-  distribution = "gaussian", shrinkage = 0.1)
+boosting_model(
+  data = "datos.aprendizaje",
+  variable.pred = NULL,
+  model.var = "modelo.boosting",
+  n.trees = 50,
+  distribution = "gaussian",
+  shrinkage = 0.1
+)
 }
 \arguments{
 \item{data}{the name of the learning data.}

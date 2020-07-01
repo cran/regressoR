@@ -11,18 +11,18 @@ creates a new section in the report, this way you can overwrite keys and delete 
 }
 \examples{
 new_report(iris, 'iris')
-insert_report('1_part', 'Title 1', 'head(iris)\\n', 'summary(iris)')
+insert_report('1_part', 'Title 1', 'head(iris)\n', 'summary(iris)')
 get_report()
 
 remove_report_elem('1_part')
 get_report()
 
 new_section_report()
-insert_report('1_part', 'Title 1', 'head(iris)\\n', 'summary(iris)')
+insert_report('1_part', 'Title 1', 'head(iris)\n', 'summary(iris)')
 get_report()
 
 new_section_report()
-insert_report('1_part', 'Title 1', 'head(iris)\\n', 'summary(iris)')
+insert_report('1_part', 'Title 1', 'head(iris)\n', 'summary(iris)')
 get_report()
 
 remove_report_elem('1_part')

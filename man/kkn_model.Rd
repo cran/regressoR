@@ -4,9 +4,15 @@
 \alias{kkn_model}
 \title{kkn_model}
 \usage{
-kkn_model(data = "datos.aprendizaje", variable.pred = NULL,
-  scale = TRUE, kmax = 7, kernel = "optimal",
-  model.var = "modelo.knn", distance = 2)
+kkn_model(
+  data = "datos.aprendizaje",
+  variable.pred = NULL,
+  scale = TRUE,
+  kmax = 7,
+  kernel = "optimal",
+  model.var = "modelo.knn",
+  distance = 2
+)
 }
 \arguments{
 \item{data}{the name of the learning data.}

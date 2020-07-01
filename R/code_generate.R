@@ -27,10 +27,10 @@ code_load <- function(row.names = TRUE, path = NULL, sep = ";", sep.dec = ",", h
     path <-  gsub("\\", "/", path, fixed=TRUE)
   }
   if(row.names){
-    return(paste0( d.o ," <- read.table('", path, "', header=", header, ", sep='", sep,
+    return(paste0(d.o, " <- read.table(stringsAsFactors = T, '", path, "', header=", header, ", sep='", sep,
                    "', dec = '", sep.dec, "', row.names = 1) \n",d," <- ",d.o))
   } else {
-    return(paste0(d.o, "<- read.table('", path, "', header=", header, ", sep='", sep,
+    return(paste0(d.o, "<- read.table(stringsAsFactors = T, '", path, "', header=", header, ", sep='", sep,
                   "', dec = '", sep.dec,"') \n",d," <- ",d.o))
   }
 }
@@ -691,8 +691,6 @@ svm_prediction <- function(data = "datos.prueba", variable.pred = NULL, model.va
 #' @param mode the method of dimension reduction is defined as mode=1 is the MCP, and mode=0 the ACP.
 #' @param scale the scale parameter of the model.
 #'
-#' @seealso \code{\link[pls]{pcr}}, \code{\link[pls]{plsr}}
-#'
 #' @export
 #'
 #' @examples
@@ -747,8 +745,6 @@ rd_prediction <- function(data = "datos.prueba", model.var = "modelo.svm", pred.
 #' @description returns the name of the method of dimension reduction.
 #'
 #' @param mode.rd the method of dimension reduction is defined as mode=1 is the MCP, and mode=0 the ACP.
-#' 
-#' @seealso \code{\link[pls]{pcr}}, \code{\link[pls]{plsr}}
 #'
 #' @export
 #'

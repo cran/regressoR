@@ -4,9 +4,14 @@
 \alias{rlr_model}
 \title{rlr_model}
 \usage{
-rlr_model(data = "datos.aprendizaje", variable.pred = NULL,
-  model.var = "modelo.rlr", cv.var = "cv.glm", alpha = 0,
-  standardize = TRUE)
+rlr_model(
+  data = "datos.aprendizaje",
+  variable.pred = NULL,
+  model.var = "modelo.rlr",
+  cv.var = "cv.glm",
+  alpha = 0,
+  standardize = TRUE
+)
 }
 \arguments{
 \item{data}{the name of the learning data.}

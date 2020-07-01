@@ -4,8 +4,12 @@
 \alias{kkn_prediction}
 \title{kkn_prediction}
 \usage{
-kkn_prediction(data = "datos.prueba", variable.pred = NULL,
-  model.var = "modelo.knn", pred.var = "prediccion.knn")
+kkn_prediction(
+  data = "datos.prueba",
+  variable.pred = NULL,
+  model.var = "modelo.knn",
+  pred.var = "prediccion.knn"
+)
 }
 \arguments{
 \item{data}{the name of the test data.}

@@ -4,8 +4,7 @@
 \alias{plot_coef_lambda}
 \title{plot_coef_lambda}
 \usage{
-plot_coef_lambda(model.var = "modelo.rlr", lambda = NULL,
-  cv.var = "cv.glm")
+plot_coef_lambda(model.var = "modelo.rlr", lambda = NULL, cv.var = "cv.glm")
 }
 \arguments{
 \item{model.var}{the name of the variable that stores the resulting model.}

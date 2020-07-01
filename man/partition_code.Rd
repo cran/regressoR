@@ -4,8 +4,13 @@
 \alias{partition_code}
 \title{partition_code}
 \usage{
-partition_code(data = "datos", p = 50, variable = NULL,
-  semilla = 5, perm.semilla = FALSE)
+partition_code(
+  data = "datos",
+  p = 50,
+  variable = NULL,
+  semilla = 5,
+  perm.semilla = FALSE
+)
 }
 \arguments{
 \item{data}{the name of the current data.}

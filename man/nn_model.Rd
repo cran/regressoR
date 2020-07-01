@@ -4,9 +4,17 @@
 \alias{nn_model}
 \title{nn_model}
 \usage{
-nn_model(data = "datos.aprendizaje", variable.pred = NULL,
-  model.var = "modelo.nn", mean.var = "mean.nn", sd.var = "sd.nn",
-  threshold = 0.01, stepmax = 1000, cant.hidden = 2, ...)
+nn_model(
+  data = "datos.aprendizaje",
+  variable.pred = NULL,
+  model.var = "modelo.nn",
+  mean.var = "mean.nn",
+  sd.var = "sd.nn",
+  threshold = 0.01,
+  stepmax = 1000,
+  cant.hidden = 2,
+  ...
+)
 }
 \arguments{
 \item{data}{the name of the learning data.}

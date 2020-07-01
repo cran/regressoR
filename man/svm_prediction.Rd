@@ -4,8 +4,12 @@
 \alias{svm_prediction}
 \title{svm_prediction}
 \usage{
-svm_prediction(data = "datos.prueba", variable.pred = NULL,
-  model.var = "modelo.svm", pred.var = "prediccion.svm")
+svm_prediction(
+  data = "datos.prueba",
+  variable.pred = NULL,
+  model.var = "modelo.svm",
+  pred.var = "prediccion.svm"
+)
 }
 \arguments{
 \item{data}{the name of the test data.}

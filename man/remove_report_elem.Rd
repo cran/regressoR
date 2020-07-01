@@ -14,7 +14,7 @@ removes an element from the report according to its key in the current section.
 }
 \examples{
 new_report(iris, 'iris')
-insert_report('1_part', 'Title 1', 'head(iris)\\n', 'summary(iris)')
+insert_report('1_part', 'Title 1', 'head(iris)\n', 'summary(iris)')
 get_report()
 remove_report_elem('1_part')
 get_report()

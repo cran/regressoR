@@ -4,8 +4,12 @@
 \alias{word_report}
 \title{word_report}
 \usage{
-word_report(title = "Sin Titulo", name = "PROMiDAT",
-  order_by_regressor = TRUE, extra = "")
+word_report(
+  title = "Sin Titulo",
+  name = "PROMiDAT",
+  order_by_regressor = TRUE,
+  extra = ""
+)
 }
 \arguments{
 \item{title}{report title.}
@@ -23,10 +27,10 @@ creates a header for the report that allows you to generate a word file.
 new_report(iris, 'iris')
 
 new_section_report()
-insert_report('1_part', 'Title 1', 'head(iris)\\n', 'summary(iris)')
+insert_report('1_part', 'Title 1', 'head(iris)\n', 'summary(iris)')
 
 new_section_report()
-insert_report('1_part', 'Title 1', 'head(iris)\\n', 'summary(iris)')
+insert_report('1_part', 'Title 1', 'head(iris)\n', 'summary(iris)')
 
 word_report(order_by_regressor = FALSE)
 

@@ -4,8 +4,11 @@
 \alias{rl_prediction}
 \title{rl_prediction}
 \usage{
-rl_prediction(data = "datos.prueba", model.var = "modelo.rl",
-  pred.var = "prediccion.rl")
+rl_prediction(
+  data = "datos.prueba",
+  model.var = "modelo.rl",
+  pred.var = "prediccion.rl"
+)
 }
 \arguments{
 \item{data}{the name of the test data.}

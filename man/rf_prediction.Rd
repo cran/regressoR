@@ -4,8 +4,12 @@
 \alias{rf_prediction}
 \title{rf_prediction}
 \usage{
-rf_prediction(data = "datos.prueba", variable.pred = NULL,
-  model.var = "modelo.rf", pred.var = "prediccion.rf")
+rf_prediction(
+  data = "datos.prueba",
+  variable.pred = NULL,
+  model.var = "modelo.rf",
+  pred.var = "prediccion.rf"
+)
 }
 \arguments{
 \item{data}{the name of the test data.}

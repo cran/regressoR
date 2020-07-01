@@ -4,8 +4,10 @@
 \alias{boosting_importance_plot}
 \title{boosting_importance_plot}
 \usage{
-boosting_importance_plot(model.var = "modelo.boosting",
-  data = "datos.aprendizaje")
+boosting_importance_plot(
+  model.var = "modelo.boosting",
+  data = "datos.aprendizaje"
+)
 }
 \arguments{
 \item{model.var}{the name of the variable that stores the resulting model.}

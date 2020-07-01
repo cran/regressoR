@@ -4,8 +4,15 @@
 \alias{code_load}
 \title{code_load}
 \usage{
-code_load(row.names = TRUE, path = NULL, sep = ";", sep.dec = ",",
-  header = TRUE, d.o = "datos.originales", d = "datos")
+code_load(
+  row.names = TRUE,
+  path = NULL,
+  sep = ";",
+  sep.dec = ",",
+  header = TRUE,
+  d.o = "datos.originales",
+  d = "datos"
+)
 }
 \arguments{
 \item{row.names}{a logical value indicating whether the data has row names.}

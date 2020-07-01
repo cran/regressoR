@@ -17,6 +17,3 @@ rd_type(1)
 rd_type(0)
 
 }
-\seealso{
-\code{\link[pls]{pcr}}, \code{\link[pls]{plsr}}
-}

@@ -4,8 +4,13 @@
 \alias{dt_model}
 \title{dt_model}
 \usage{
-dt_model(data = "datos.aprendizaje", variable.pred = NULL,
-  model.var = "modelo.dt", minsplit = 20, maxdepth = 15)
+dt_model(
+  data = "datos.aprendizaje",
+  variable.pred = NULL,
+  model.var = "modelo.dt",
+  minsplit = 20,
+  maxdepth = 15
+)
 }
 \arguments{
 \item{data}{the name of the learning data.}

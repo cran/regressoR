@@ -4,9 +4,13 @@
 \alias{boosting_prediction}
 \title{boosting_prediction}
 \usage{
-boosting_prediction(data = "datos.prueba", variable.pred = NULL,
-  model.var = "modelo.boosting", pred.var = "prediccion.boosting",
-  n.trees = 50)
+boosting_prediction(
+  data = "datos.prueba",
+  variable.pred = NULL,
+  model.var = "modelo.boosting",
+  pred.var = "prediccion.boosting",
+  n.trees = 50
+)
 }
 \arguments{
 \item{data}{the name of the test data.}

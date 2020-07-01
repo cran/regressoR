@@ -4,8 +4,14 @@
 \alias{insert_report}
 \title{insert_report}
 \usage{
-insert_report(id, title = NA, ..., interpretation = TRUE,
-  is.chunk = TRUE, add = FALSE)
+insert_report(
+  id,
+  title = NA,
+  ...,
+  interpretation = TRUE,
+  is.chunk = TRUE,
+  add = FALSE
+)
 }
 \arguments{
 \item{id}{a string with the key of what is inserted in the report.}
@@ -25,7 +31,7 @@ inserts an element in the report in the current section.
 }
 \examples{
 new_report(iris, "iris")
-insert_report("1_part", 'Title 1', 'head(iris)\\n', 'summary(iris)')
+insert_report("1_part", 'Title 1', 'head(iris)\n', 'summary(iris)')
 get_report()
 clean_report()
 

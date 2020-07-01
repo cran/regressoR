@@ -4,9 +4,14 @@
 \alias{nn_prediction}
 \title{nn_prediction}
 \usage{
-nn_prediction(data = "datos.prueba", variable.pred = NULL,
-  model.var = "modelo.nn", pred.var = "prediccion.nn",
-  mean.var = "mean.nn", sd.var = "sd.nn")
+nn_prediction(
+  data = "datos.prueba",
+  variable.pred = NULL,
+  model.var = "modelo.nn",
+  pred.var = "prediccion.nn",
+  mean.var = "mean.nn",
+  sd.var = "sd.nn"
+)
 }
 \arguments{
 \item{data}{the name of the test data.}
