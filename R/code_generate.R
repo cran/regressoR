@@ -691,6 +691,8 @@ svm_prediction <- function(data = "datos.prueba", variable.pred = NULL, model.va
 #' @param mode the method of dimension reduction is defined as mode=1 is the MCP, and mode=0 the ACP.
 #' @param scale the scale parameter of the model.
 #'
+#' @seealso \code{\link[pls]{pcr}}, \code{\link[pls]{plsr}}
+#'
 #' @export
 #'
 #' @examples
@@ -745,6 +747,8 @@ rd_prediction <- function(data = "datos.prueba", model.var = "modelo.svm", pred.
 #' @description returns the name of the method of dimension reduction.
 #'
 #' @param mode.rd the method of dimension reduction is defined as mode=1 is the MCP, and mode=0 the ACP.
+#' 
+#' @seealso \code{\link[pls]{pcr}}, \code{\link[pls]{plsr}}
 #'
 #' @export
 #'

@@ -2982,7 +2982,7 @@ shinyServer(function(input, output, session){
                                 "activa","nn","xgb","selbooster","selnrounds","selectCapas","threshold",
                                 "stepmax","redPlot","rll","rlr","posibLanda","coeff","gcoeff",
                                 "automatico","landa","shrinkage","resumenVarPre", "R2", "distknn",
-                                "ncomp", "rd", "RdPred", "RdVarPred", "errRDnCom", "RMSE"))
+                                "ncomp", "rd", "RdPred", "RdVarPred", "errRDnCom", "RMSE","eliminar", "imputar"))
 
     updatePlot$normal <- normal_default("datos", input$sel.normal, input$col.normal, translate("curvanormal"))
     updatePlot$dya.cat <- def_code_cat(variable = input$sel.distribucion.cat)

@@ -1,4 +1,3 @@
-
 suppressMessages(suppressWarnings({
   library(regressoR)
   library(DT)
@@ -7,11 +6,8 @@ suppressMessages(suppressWarnings({
   library(shiny)
   library(e1071)
   library(rpart)
-  library(knitr)
   library(glmnet)
-  library(rattle)
   library(xtable)
-  library(xgboost)
   library(shinyjs)
   library(ggplot2)
   library(stringr)
@@ -26,8 +22,8 @@ suppressMessages(suppressWarnings({
   library(flexdashboard)
   library(shinydashboard)
   library(shinydashboardPlus)
+  library(rattle)
   library(dplyr)
-  library(zip)
   library(pls)
 }))
 
@@ -43,6 +39,9 @@ infoBoxPROMiDAT <- regressoR:::infoBoxPROMiDAT
 inputRadio <- regressoR:::inputRadio
 radioButtonsTr <- regressoR:::radioButtonsTr
 tabsOptions <- regressoR:::tabsOptions
+
+
+source("utils_inputs.R", local = TRUE, echo = FALSE )
 
 # MENU --------------------------------------------------------------------------------------------------------------------
 
@@ -100,7 +99,7 @@ mi.menu <- sidebarMenu(id = "principal",
               supervised.learning.menu,
               compare.menu,
               new.prediction.menu,
-              report.menu,
+              #report.menu,
               info.menu,
               hr(),
               menu.language,
@@ -111,9 +110,11 @@ mi.menu <- sidebarMenu(id = "principal",
 #Imports .css and .js, also decide the icon
 mi.head <- tags$head(
   tags$link(rel = "stylesheet", type = "text/css", href = "style_regressor.css"),
+  tags$link(rel = "stylesheet", type = "text/css", href = "regressor_inputs.css"),
   tags$link(rel="icon", href="http://www.promidat.org/theme/image.php/formal_white/theme/1438713216/favicon"),
   useShinyjs(),
-  tags$script(src = "script_regressor.js"))
+  tags$script(src = "script_regressor.js"),
+  tags$script(src = "regressor_inputs.js"))
 
 #The loading page
 load.page <- conditionalPanel(condition="($('html').hasClass('shiny-busy'))",
@@ -124,10 +125,10 @@ load.page <- conditionalPanel(condition="($('html').hasClass('shiny-busy'))",
 data.upload.panel <- tabPanel(title = labelInput("cargar"), width = 12, solidHeader = FALSE, collapsible = FALSE, collapsed = FALSE,
                                checkboxInput('header', labelInput("header"), TRUE),
                                checkboxInput('rowname', labelInput("Rownames"), TRUE),
-                               radioButtonsTr('sep', "separador", c(';', ',', '\t'), c("puntocoma", "coma", "tab")),
-                               radioButtonsTr('dec', "separadordec", c(',', '.'), c("coma", "punto")),
-                               switchInput(inputId = "deleteNA", onStatus = "success", offStatus = "danger", value = T, width = "100%",
-                                           label = labelInput("eliminana"), onLabel = labelInput("si"), offLabel = labelInput("no"), labelWidth = "100%"),
+                              radioButtons('sep', labelInput("separador"), inline = T,
+                                choiceNames = c(';', ',', 'TAB'), choiceValues = c(';', ',', '\t')),
+                              radioButtons('dec', labelInput("separadordec"), c(',', '.'), inline = T),
+                              radioSwitch("deleteNA", "eliminana", c("eliminar", "imputar")),
                                fileInput('file1', label =  labelInput("cargarchivo"), placeholder = "", buttonLabel =  labelInput("subir"), width = "100%",
                                          accept = c('text/csv', '.csv')),
                                actionButton("loadButton", labelInput("cargar"), width = "100%"),
@@ -1113,7 +1114,7 @@ page.info <- tabItem(tabName = "acercaDe",
                        infoBoxPROMiDAT(labelInput("copyright"), "PROMiDAT S.A.", icon = icon("copyright")),
                        infoBoxPROMiDAT(labelInput("info"), tags$a( href="https://www.promidat.com/", style = "color:white;",
                                                                    target = "_blank", "https://www.promidat.com"), icon = icon("info")),
-                       infoBoxPROMiDAT(labelInput("version"), "1.1.9", icon = icon("file-code-o")))
+                       infoBoxPROMiDAT(labelInput("version"), "1.2.1", icon = icon("file-code-o")))
 
 # FULL PAGE ---------------------------------------------------------------------------------------------------------------
 
@@ -1122,10 +1123,10 @@ page.info <- tabItem(tabName = "acercaDe",
 # corresponding.
 
 shinyUI(
-  dashboardPagePlus(
+  dashboardPage(
   title="PROMiDAT - RegressoR",
-  dashboardHeaderPlus(
-    title = tags$a(href="http://promidat.com", target = "_blank",
+  dashboardHeader(
+    title = tags$a(href="https://promidat.com", target = "_blank",
                    img(src="Logo2.png", height=55, width="100%",
                        id="imgPromidat"))),
   dashboardSidebar(mi.menu),
@@ -1149,5 +1150,5 @@ shinyUI(
                          page.nn,
                          page.comparison,
                          page.new.predictions,
-                         page.generate.report,
+                         #page.generate.report,
                          page.info) )))

@@ -1,6 +1,6 @@
 
 load("inst/extdata/translation.bin") # Load translation.bin (dictionary to change language)
-enc <- ifelse(toupper(.Platform$OS.type) != "WINDOWS", "utf8", "UTF-8")
+enc <- "utf8"
 options_regressor(language = "es")
 
 #' exe

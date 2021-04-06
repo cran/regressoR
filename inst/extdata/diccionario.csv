@@ -11,6 +11,8 @@ aprendizaje;Aprendizaje Supervisado;Supervised Learning
 comparacion;Comparación de Modelos;Model Comparison
 predicnuevos;Predicción Individuos Nuevos;Predict New Cases
 pred;Predicción;Prediction
+eliminar;Eliminar;Delete
+imputar;Imputar;Impute
 acerto;Acertó;Matched
 fallo;Falló;Failed
 rll;Regresión Lineal;Linear Regression
@@ -26,15 +28,15 @@ reporte;Generar Reporte;Generate Report
 acercade;Acerca De;About
 cargar;Cargar;Load
 trans;Transformar;Transform
-header;Encabezado;Header
-Rownames;Incluir nombre de filas;Rownames
-separador;Separador;Separator
+header;Nombre de Variables;Variables names
+Rownames;Nombre de Individuos;Row names
+separador;Separador de Datos;Data Separator
 coma;Coma;Comma
 puntocoma;Punto y coma;Semicolon
 tab;Espacio;Tab
-separadordec;Separador Decimal;Decimal Separator
+separadordec;Separador de Decimales;Decimal Separator
 punto;Punto;Point
-eliminana;Eliminar NA;Remove NA
+eliminana;Acción para Datos Ausentes (NAs);Action for Missing Data (NAs)
 si;SI;YES
 no;NO;NO
 prec;Precisión;Precision
@@ -75,8 +77,8 @@ habilitada;Habilitada;Enabled
 deshabilitada;Deshabilitada;Disabled
 seleccionarPredecir;Seleccionar la variable a predecir:;Select the variable to be predicted:
 propA;Partición de Aprendizaje:;Training partition:
-propP;Partición de Prueba;Test partition:
-VarsPred;Variables Predictoras:;Variables Predictoras:;Predictor Variables:
+propP;Partición de Prueba:;Test partition:
+VarsPred;Variables Predictoras:;Predictor Variables:
 generar;Generar;Generate
 generarM;Generar Modelo;Generate Model
 tipo;Tipo;Type
@@ -193,7 +195,7 @@ contribucion;Contribuciones (%);Contributions (%)
 positivo;Positivo;Positive
 negativo;Negativo;Negative
 sinasimetria;Sin Asimetría;Without Asymmetry
-fisher;Cálculo de Fisher;Fisher's calculation
+fisher;Cálculo de Fisher;"Fisher's calculation"
 asimetria;Asimetría;Asymmetry
 msjclusters;Los clústeres fueron correctamente agregados.;The clusters were added correctly.
 reptransformar;Transformación de Datos;Data Transformation
@@ -248,7 +250,7 @@ automatico;Automatico;Automatic
 landa;Mejor Lambda Log(x) = ;Better Lambda Log(x) =
 bigPlot;El gráfico es demasiado grande para desplegarse;The graph is too large to display
 ErrorModelo;Aún no genera el modelo;The model has not yet been generated
-ErrorDatosPN;Aún no carga los datos a predecir;It still doesn't load the data to predict
+ErrorDatosPN;Aún no carga los datos a predecir;"It still doesn't load the data to predict"
 ErrorBsize;La tabla de aprendizaje es muy pequeña para ejecutar este modelo;The learning table is too small to run this model
 errornum;Se necesitan variables numéricas  para esta parte;You need numerical variables for this part
 errorcat;Se necesitan variables categóricas  para esta parte;You need categorical variables for this part

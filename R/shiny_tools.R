@@ -174,6 +174,8 @@ render_index_table <- function(table){
 #' @param scrollY the heigth of the table.
 #' @param server whether to use server-side processing. If TRUE, then the data is kept on the server and the browser requests a page at a time; if FALSE, then the entire data frame is sent to the browser at once.
 #'
+#' @seealso  \code{\link[DT]{datatable}}, \code{\link[DT]{renderDT}}
+#'
 #' @return a shiny.render.function
 #' @export
 #'

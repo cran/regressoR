@@ -45,3 +45,6 @@ if(interactive()) {
 }
 
 }
+\seealso{
+\code{\link[DT]{datatable}}, \code{\link[DT]{renderDT}}
+}

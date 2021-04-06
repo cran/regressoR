@@ -37,3 +37,6 @@ exe(x)
 print(modelo.rd)
 
 }
+\seealso{
+\code{\link[pls]{pcr}}, \code{\link[pls]{plsr}}
+}

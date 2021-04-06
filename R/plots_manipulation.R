@@ -165,16 +165,16 @@ importance_plot_rf <- function(model.rf, title.1, title.2){
   importancia <- randomForest::importance(model.rf) %>% as.data.frame() %>% tibble::rownames_to_column("Variable")
   size.y <- ifelse(nrow(importancia) <= 25, 1.5, 1 - (nrow(importancia) - 25)/3 * 0.01 )
   size.y <- ifelse(size.y <= 0, 0.1, size.y)
-  g1 <- ggplot(importancia, aes(x = forcats::fct_reorder(importancia$Variable, importancia$`%IncMSE`), y = importancia$`%IncMSE`, 
-                                fill = forcats::fct_reorder(importancia$Variable, importancia$`%IncMSE`))) + 
+  g1 <- ggplot(importancia, aes(x = forcats::fct_reorder(.data$Variable, .data$`%IncMSE`), y = .data$`%IncMSE`, 
+                                fill = forcats::fct_reorder(.data$Variable, .data$`%IncMSE`))) + 
     geom_bar(stat = 'identity', position = 'identity', width = 0.1) +
     labs(title = title.1,  y = "", x = "") +
     scale_y_continuous(labels = scales::comma) + coord_flip() +
     theme(axis.text.x = element_text(angle = 45, hjust = 1),
           axis.text.y = element_text(size=rel(size.y)),
           plot.title  = element_text(size = 10),legend.position = "none")
-  g2 <- ggplot(importancia, aes(x = forcats::fct_reorder(importancia$Variable, importancia$IncNodePurity), 
-                                y = importancia$IncNodePurity, fill = forcats::fct_reorder(importancia$Variable, importancia$IncNodePurity))) + 
+  g2 <- ggplot(importancia, aes(x = forcats::fct_reorder(.data$Variable, .data$IncNodePurity), 
+                                y = .data$IncNodePurity, fill = forcats::fct_reorder(.data$Variable, .data$IncNodePurity))) + 
     geom_bar(stat = 'identity', position = 'identity', width = 0.1) +
     labs(title = title.2,  y = "", x = "") +
     scale_y_continuous(labels = scales::comma) + coord_flip() +
@@ -206,7 +206,7 @@ importance_plot_rf <- function(model.rf, title.1, title.2){
 plot_RMSE <- function(model, n.comp = "n.comp.rd"){
   RMSE.CV <- pls::RMSEP(model)$val[1, 1, ]
   df <- data.frame(Componentes = 0:(length(RMSE.CV) - 1), Error = RMSE.CV)
-  ggplot(data = df, mapping = aes(x = df$Componentes, y = df$Error)) +
+  ggplot(data = df, mapping = aes(x = .data$Componentes, y = .data$Error)) +
     geom_point(size = 1, col = "dodgerblue3") +
     geom_line(size = 0.5, col = "dodgerblue3") +
     labs(title = "RMSE seg\u00fan N\u00famero de Componentes",
@@ -237,7 +237,7 @@ plot_pred_rd <- function(model, n.comp = "n.comp.rd"){
   var.explicada <- cumsum(pls::explvar(model)) / 100
   df <- data.frame(Componentes = 1:length(var.explicada), Varianza = var.explicada)
   ggplot(data = df, 
-         mapping = aes(x = df$Componentes, y = df$Varianza)) +
+         mapping = aes(x = .data$Componentes, y = .data$Varianza)) +
     geom_point(size = 1, col = "dodgerblue3") +
     geom_line(size = 0.5, col = "dodgerblue3") +
     scale_y_continuous(labels = scales::percent) +
@@ -268,7 +268,7 @@ plot_pred_rd <- function(model, n.comp = "n.comp.rd"){
 plot_var_pred_rd <- function(model, n.comp = "n.comp.rd"){
   var.explicada <- drop(pls::R2(model, estimate = "train", intercept = FALSE)$val)
   df <- data.frame(Componentes = 1:length(var.explicada), Varianza = var.explicada)
-  ggplot(data = df, mapping = aes(x = df$Componentes, y = df$Varianza)) +
+  ggplot(data = df, mapping = aes(x = .data$Componentes, y = .data$Varianza)) +
     geom_point(size = 1, col = "dodgerblue3") +
     geom_line(size = 0.5, col = "dodgerblue3") +
     scale_y_continuous(labels = scales::percent) +
