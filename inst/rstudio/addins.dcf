@@ -1,4 +1,4 @@
-Name: RegressoR
-Description: Shiny RegressoR
-Binding: init_regressor
+Name: regressoR
+Description: regressoR
+Binding: run_app
 Interactive: true

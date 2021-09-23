@@ -4,7 +4,7 @@
 \alias{exe}
 \title{exe}
 \usage{
-exe(..., envir = options_regressor()$exe.envir)
+exe(..., envir = parent.frame())
 }
 \arguments{
 \item{...}{one or more texts to be concatenated and executed.}

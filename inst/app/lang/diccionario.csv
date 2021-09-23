@@ -1,0 +1,287 @@
+key;es;en
+confg;Configuración;Configuration
+idioma;Idioma;Language
+ndec;Número de Decimales;Number of Decimals
+espanol;Español;Spanish
+selidioma;Seleccionar Idioma:;Select Language
+data;Datos;Data
+dataA;Datos de Aprendizaje;Training Sample
+dataP;Datos de Prueba;Test Sample
+configuraciones;Configuraciones;Settings
+basico;Estadísticas Básicas;Basic Statistics
+variable;Variable;Variable
+poderpred;Poder Predictivo;Predictive Power
+aprendizaje;Aprendizaje Supervisado;Supervised Learning
+comparacion;Comparación de Modelos;Model Comparison
+predicnuevos;Predicción Individuos Nuevos;Predict New Cases
+pred;Predicción;Prediction
+eliminar;Eliminar;Delete
+imputar;Imputar;Impute
+acerto;Acertó;Matched
+fallo;Falló;Failed
+rl;Regresión Lineal;Linear Regression
+rlr;Regresión Penalizada;Penalized Regression
+knn;K Vecinos Más Cercanos;K Nearest Neighbors
+dt;Árboles de Regresión;Regression Trees
+rf;Bosques Aleatorios;Random Forests
+boost;Potenciación;Boosting
+svm;Soporte Vectorial;Support Vector Machines
+nn;Redes Neuronales;Neural Networks
+xgb;XGPotenciación;XGBoosting
+reporte;Generar Reporte;Generate Report
+acercade;Acerca De;About
+cargar;Cargar;Load
+trans;Transformar;Transform
+ID;ID;ID
+header;Nombre de Variables;Variables names
+Rownames;Nombre de Individuos;Row names
+separador;Separador de Datos;Data Separator
+coma;Coma;Comma
+puntocoma;Punto y coma;Semicolon
+tab;Espacio;Tab
+separadordec;Separador de Decimales;Decimal Separator
+punto;Punto;Point
+eliminana;Acción para Datos Ausentes (NAs);Action for Missing Data (NAs)
+si;SI;YES
+no;NO;NO
+prec;Precisión;Precision
+precG;Precisión Global;Global Precision
+errG;Error Global;Global Error
+cargarchivo;Cargar Archivo;Load Archive
+subir;Subir;Upload
+descarga;Descargar Datos;Download Data
+buscar;Buscar:;Search:
+numerico;Numérico;Numeric
+numericas;Numéricas;Numericals
+categorico;Categórico;Categorical
+categoricas;Categóricas;Categoricals
+disyuntivo;Disyuntivo;Disjunctive
+distpred;Distribución de Variable a Predecir;Distribution of Variable to Predict
+distpredcat;Distribución de Variables Categóricas Según Variable a Predecir;Distribution of Categorical Variables According to the Variable to Predict
+pares;Gráfico de Pares;Pair Plot
+denspred;Densidad de Variables Numéricas Según Variable a Predecir;Density of Numerical Variables According to Variable to Predict
+distrelvar;Distribución relativa de la variable;Relative distribution of the variable
+denspodlab;Densidad de la variable ${X} según ${Y};Density of variable ${X} according to ${Y}
+distpodcat;Distribución relativa de la variable ${X} según ${Y};Relative distribution of the variable ${X} according to ${Y}
+generatem;Generación del Modelo;Generation of the Model
+predm;Predicción del Modelo;Prediction of the Model
+mc;Matriz de Confusión;Confusion Matrix
+indices;Índices Generales;General Indices
+gclasificacion;Gráfico Clasificación;Classification Plot
+evolerror;Evolución del Error;Error Evolution
+garbol;Gráfico Árbol;Tree Plot
+reglas;Reglas;Rules
+varImp;Importancia de Variables;Variable Importance
+kv;Valor de K:;K Value:
+selkernel;Seleccionar un Kernel:;Select kernel:
+escal;Escalar Datos;Scale Data
+reald;Datos Reales;Real Data
+realValue;Valor Real;Real Value
+predvsreal;Predicciones vs Valores Reales;Predictions vs Real Values
+variables;Variables;Variables
+semilla;Semilla Aleatoria:;Random Seed:
+habilitada;Habilitada;Enabled
+deshabilitada;Deshabilitada;Disabled
+seleccionarPredecir;Seleccionar la variable a predecir:;Select the variable to be predicted:
+propA;Partición de Aprendizaje:;Training partition:
+propP;Partición de Prueba:;Test partition:
+VarsPred;Variables Predictoras:;Predictor Variables:
+generar;Generar;Generate
+generarM;Generar Modelo;Generate Model
+tipo;Tipo;Type
+activa;Activa;Active
+aplicar;Aplicar;Apply
+cargarNuev;Cargar Individuos Nuevos;Load New Cases
+resumen;Resumen Numérico;Numeric Summary
+resumenVarPre;Resumen Numérico de la Variable a Predecir;Numerical Summary of the Variable to be Predicted
+normalidad;Test de Normalidad;Normality Test
+dispersion;Dispersión;Scatter Plot
+distribuciones;Distribuciones;Distributions
+distribucion;Distribución;Distribution
+R2;R cuadrado;R squared
+correlacion;Correlación;Correlation
+resumenvar;Resumen Numérico por Variable;Numeric Summary by Variable
+selvar;Seleccionar la variable:;Select the variable:
+selvars;Seleccionar Variables:;Select Variables:
+plotnormal;Gráfico Normalidad;Normal Plot
+titulonormal;Test de normalidad de;Normal Plot of
+curvanormal;Curva Normal;Normal Curve
+selcolbar;Seleccione color de las barras:;Select bar color:
+selcolline;Seleccione color de las líneas:;Select line color:
+selcolpoint;Seleccione color de los puntos:;Select point color:
+histograma;Histograma;Histogram
+sigue;¿Sigue la normal?;is normally distributed?
+pvalue;P-valor (Shapiro);P-value (Shapiro)
+tasim;Valor del test;Test value
+rocCurva;Curva ROC;ROC Curve
+selectMod;Seleccionar Modelo:;Select Model:
+selectCat;Seleccionar Categoría:;Select Category:
+selbooster;Seleccionar el Amplificador:;Select Booster:
+selnrounds;Número Máximo de Iteraciones:;Maximum Number of Iterations:
+cargarDatos;Cargar Datos;Load Data
+transDatos;Transformar Datos;Transform Data
+densidad;Densidad;Density
+opciones;Opciones;Options
+selcolor;Seleccionar Color:;Select Color:
+selcolores;Seleccionar Colores:;Select Colors:
+ejecutar;Ejecutar;Run
+titulodistribucion;Distribución y Atipicidad de;Distribution and Atipicity of
+codigo;Código;Code
+codigodistnum;Grafico de la Distribución (Numéricas);Distribution Plot (Numerical)
+codigodistcat;Grafico de la Distribución (Categóricas);Distribution Plot (Categorical)
+cantidadcasos;Cantidad de Casos;Number of Cases
+categorias;Categorías;Categories
+selmetodo;Seleccionar Método:;Select Method:
+seltipo;Seleccionar Tipo:;Select Type:
+individuos;Individuos;Individuals
+sobreposicion;Sobreposición;Overlaying
+ayudacp;Ayuda Interpretación; Interpretation Help
+vee;Varianza Explicada por cada Eje;Variance Explained for each Axis
+cci;Cosenos Cuadrados de los Individuos;Square Cosines of Individuals
+ccv;Cosenos Cuadrados de las Variables;Square Cosines of Variables
+cvc;Correlación Variables con los Componenetes;Correlation Variables with the Componenetes
+cp1;Contribución de las variables Dim-1;Contribution of the variables Dim-1
+cp2;Contribución de las variables Dim-2;Contribution of the variables Dim-2
+resultados;Resultados Numéricos;Numerical Results
+centrar;Centrar y Reducir;Center and Reduce
+numerodim;Número de Dimensiones;Number of Dimentions
+selejes;Seleccionar Ejes:;Select Axes:
+cosind;Coseno de los Individuos:;Cosines of Individuals:
+cosvar;Coseno de las Variables:;Cosines of Variables:
+selcolorind;Seleccionar Color (Individuos):;Select Color (Individuals):
+selcolorvar;Seleccionar Color (Variables):;Select Color (Variables):
+dendograma;Dendograma;Dendogram
+mapa;Mapa;Map
+horizontal;Horizontal;Horizontal
+vertical;Vertical;Vertical
+radar;Radar;Radar
+interpretacioncat;Interpretación Categórico;Categorical Interpretation
+selectCapas;Cantidad de capas ocultas:;Number of hidden layers:
+indiceagrega;Índice de Agregación:;Aggregation Index:
+metododist;Método para la Distancia:;Distance Method:
+agregarcluster;Agregar Clústers a Tabla de Datos;Add Clusters to Dataset
+todos;Todos;All
+jambu;Codo de Jambu;Jambu Elbow
+kiter;Cantidad de iteraciones para K;Number of iterations to K
+nstart;Ejecuciones en Formas Fuertes:;Executions in Strong Forms:
+niter;Número de Iteraciones:;Number of Iterations:
+algoritmo;Algoritmo:;Algorithm:
+tituloreporte;Reporte;Report
+titulo;Digite el Titulo:;Enter the Title:
+nombre;Digite su nombre:;Enter your Name:
+descargar;Descargar;Download
+salida;Salida R;R Output
+copyright;TODOS LOS DERECHOS RESERVADOS A;ALL RIGHTS RESERVED TO
+info;MÁS INFORMACIÓN;MORE INFORMATION
+version;VERSIÓN DEL SISTEMA;SYSTEM VERSION
+siguiente;Siguiente;Next
+anterior;Anterior;Previous
+primero;Primero;First
+ultimo;Ultimo;Last
+nodata;No hay datos disponibles;No data available in table
+codedist;Gráfico de la Distribución;Distribution Plot
+codecentros;Cálculo de los Centros;Calculation of Centers
+codehoriz;Gráfica todas las variables en Horizontal;Plot all the variables in Horizontal
+codevert;Gráfica todas las variables en Vertical;Plot all the variables in Vertical
+coderadar;Gráfica todas las variables en radar;Plot all the variables in Radar
+codejambu;Cálculo del Codo de Jambu;Calculation of Jambu Elbow
+q1;Primer Cuartil;First Quartile
+mediana;Mediana;Median
+q3;Tercer Cuartil;Third Quartile
+minimo;Mínimo;Minimum
+atipicos;Datos Atípicos;Atypical Data
+minsplit;Mínimo para dividir un nodo:;Minimum to split a node:
+shrinkage;Ritmo de Aprendizaje;Learning Rate:
+maxdepth;Profundidad Máxima:;Max Depth:
+splitIndex;Índice de división:;Split Index:
+numTree;Número de Árboles:;Number of Trees:
+numVars;Número de variables:;Number of variables:
+selectAlg;Seleccionar Algoritmo:;Select Algorithm:
+ruleNumTree;Reglas del árbol número:;Rules of the tree number:
+tablaComp;Tabla Comparativa;Comparison Table
+seleParModel;Selección y Parametrización del Modelo;Selection and Parameterization of the Model
+promedio;Promedio;Mean
+maximo;Máximo;Maximum
+ds;Desviación Estandar;Standard deviation
+dimensiones;Dimensiones;Dimensions
+porcvee;Porcentaje de Varianzas Explicadas;Percentage of Variances Explained
+calidadcos;Cos2 - Calidad de la Representación;Cos2 - Quality of Representation
+contribucion;Contribuciones (%);Contributions (%)
+positivo;Positivo;Positive
+negativo;Negativo;Negative
+sinasimetria;Sin Asimetría;Without Asymmetry
+fisher;Cálculo de Fisher;"Fisher's calculation"
+asimetria;Asimetría;Asymmetry
+msjclusters;Los clústeres fueron correctamente agregados.;The clusters were added correctly.
+reptransformar;Transformación de Datos;Data Transformation
+repeliminacion;Eliminación de Variables;Elimination of Variables
+repmodelo;Modelo ACP;PCA Model
+rephc;Clusterización Jerarquica;Hierarchical Clusterization
+repcor;Matriz de Correlaciones;Correlation Matrix
+repcaind;Plano Principal;Main Plane
+repcavar;Circulo de Correlaciones;Correlation Circle
+repcabi;Sobreposición del Circulo y el Plano;Overlap of the Circle and the Plane
+rephoriz;Interpretación Horizontal;Horizontal Interpretation
+repvert;Interpretación Vertical;Vertical Interpretation
+repradar;Gráfico Radar;Radar Plot
+repcat;Interpretación Variables Categóricas;Interpretation of Categorical Variables
+repinter;Retroalimentación;Feedback
+distancia;Método Distancia:;Distance Method:
+dif;Diferencia;Difference
+metodo;Método:;Method:
+iter;Iteraciones:;Iterations:
+coseno;Coseno:;Cosine:
+ejes;Ejes:;Axes:
+repcosind;Coseno Individuos:;Individuals Cosine:
+repcosvar;Coseno Variables:;Variables Cosine:
+repdim;Dimensiones:;Dimentions:
+codreporte;Código del Reporte;Report Code
+tieneVP;Tiene que seleccionar una variable a predecir;You have to select a variable to predict
+tieneD;Tiene que ingresar datos;You have to enter data
+tieneDAP;Tiene que crear los datos de aprendizaje y de prueba;You have to create the learning and test data
+errorCData;Error al cargar los Datos: Revisar separadores;Error when loading the Data: Check separators
+tieneCData;Tiene que cargar los datos;You have to load the data
+errorSeg;Error al dividir los datos :;Error when dividing the data :
+tieneSVP;Tiene que seleccionar una variable a predecir;You have to select a variable to predict
+NoDRule;No se puede mostrar las reglas para el árbol seleccionado;Cannot display rules for selected tree
+RocNo;La curva ROC solo aplica para variables binarias;The ROC curve only applies to binary variables
+NoTamColum;Los datos no poseen las mismas columnas;Data does not have the same columns
+varp;Gráfico de importancia de variables;Variable Importance Chart
+threshold;Criterios de detención:;Detention criteria:
+stepmax;Pasos máximos para el entrenamiento:;Maximum steps for the training:
+nnWar;El modelo no converge con los parámetros actuales, intente modificarlos;The model does not converge with the current parameters, try to modify them
+redPlot;Red Neuronal;Neural Network
+MSE;Error Cuadrático Medio;Mean Squared Error
+RMSE;Raíz Error Cuadrático Medio;Root Mean Squared Error
+MAE;Error Absoluto Medio;Mean Absolute Error
+ER;Error Relativo (%);Relative Error (%)
+impVarA;Importancia de Variables Según el Porcentaje de Incremento del MSE;Importance of Variables According to Percentage Increase in Mean Square Error
+IncMSE;Aumento Porcentual del Error Cuadrático Medio;Percentage Increase in Mean Square Error
+impVarRSS;Importancia Variables según Reducción del RSS;Importance Variables according to RSS reduction
+impVarRI;Importancia de Variables según Influencia Relativa;Importance of Variables by Relative Influence
+RI;Influencia Relativa;Relative Influence
+posibLanda;Posibles lambda;Possible lambda
+coeff;Coeficientes;Coefficients
+nonZeroCoeff;Coeficientes Distintos de Cero;Non-Zero Coefficients
+gcoeff;Coeficientes y lambda;Coefficients and lambda
+manual;Manual;Manual
+automatico;Automático;Automatic
+log_landa;Lambda Log(x) = ;Lambda Log(x) =
+selected;Seleccionado;Selected
+uppCurve;Curva Superior;Upper Curve
+lowCurve;Curva Inferior;Lower Curve
+bigPlot;El gráfico es demasiado grande para desplegarse;The graph is too large to display
+ErrorModelo;Aún no genera el modelo;The model has not yet been generated
+ErrorDatosPN;Aún no carga los datos a predecir;"It still doesn't load the data to predict"
+ErrorBsize;La tabla de aprendizaje es muy pequeña para ejecutar este modelo;The learning table is too small to run this model
+errornum;Se necesitan variables numéricas  para esta parte;You need numerical variables for this part
+errorcat;Se necesitan variables categóricas  para esta parte;You need categorical variables for this part
+noModel;No se ha generado el modelo;The model has not been generated
+distknn;Distancia q:;q Distance:
+rd;Reducción de Dimensión;Dimension Reduction
+ncomp;Número de Componentes;Number of components
+RMSEComp;RMSE Según Número de Componentes;RMSE According to Number of Components
+RdPred;Varianza Explicada en Predictores;Variance Explained in Predictors
+RdVarPred;Varianza Explicada en Variable a Predecir;Variance Explained in Variable to Predict
+VarExp;Porcentaje de Varianza Explicada;Percentage of Explained Variance
+errRDnCom;La cantidad de componentes excede la cantidad existente;The quantity of components exceeds the existing quantity

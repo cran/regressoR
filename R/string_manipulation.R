@@ -1,7 +1,4 @@
-
-load("inst/extdata/translation.bin") # Load translation.bin (dictionary to change language)
-enc <- "utf8"
-options_regressor(language = "es")
+# Updates the labelInputs that the language changes
 
 #' exe
 #' 
@@ -18,9 +15,10 @@ options_regressor(language = "es")
 #' exe("5","+","5")
 #' exe("plot(iris$Species)")
 #' 
-exe <- function(..., envir = options_regressor()$exe.envir){
-  envir <- if(is.null(envir) || !is.environment(envir)) parent.frame() else envir
-  eval(parse(text = paste0(...)), envir = envir)
+exe <- function(..., envir = parent.frame()){
+  environ <- envir
+  envir <- if(is.null(environ) || !is.environment(environ)) parent.frame() else environ
+  eval(parse(text = paste0(...)), envir = environ)
 }
 
 #' extract_code
@@ -66,54 +64,4 @@ as_string_c <- function(vect, quote = TRUE){
   else{
     return(paste0("c(",paste0(vect, collapse = ","),")"))
   }
-}
-
-#' translate
-#' 
-#' @description translates text id into current language.
-#' 
-#' @param text the id for the text.
-#' @param language the language to choose. It can be "es" or "en".
-#' 
-#' @export
-#' @examples
-#' translate("knnl")
-#' translate("knnl", "en")
-#' 
-translate <- function(text, language = options_regressor("language")) {
-  if(is.null(language) || !any(language %in% c("es", "en"))){
-    language <- "es"
-  }
-  language <- as.character(language)
-  sapply(text, function(s) {
-    elem <- ifelse(is.null(translation[[s]][[language]]), s, translation[[s]][[language]])
-    Encoding(elem) <- enc
-    elem
-  }, USE.NAMES = F)
-}
-
-#' models_mode
-#' 
-#' @description transforms the names of a list from key-mode form to value-mode form.
-#'
-#' @param list.names a list whose names function as keys for \code{\link[regressoR]{translate}}. The names have to have the key-mode form.
-#' 
-#' @export
-#'
-#' @examples
-#' x <- list('knnl-mode1' = 1, 'knnl-mode2' = 2, 'knnl-mode2' = 5)
-#' models_mode(x)
-#' 
-models_mode <- function(list.names = list()){
-  if(length(list.names) == 0) {
-    return("---X---")
-  }
-  nombres <- c()
-  for (nom in names(list.names)){
-    nom.aux <- unlist(strsplit(nom, "-"))
-    nombres <- c(nombres,ifelse(length(nom.aux) == 1,
-                                translate(nom.aux),
-                                paste0(translate(nom.aux[1]),"-",nom.aux[2])))
-  }
-  return(nombres)
 }
