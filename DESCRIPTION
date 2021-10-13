@@ -1,14 +1,14 @@
 Title: Regression Data Analysis System
 Package: regressoR
 Type: Package
-Version: 2.0.0
+Version: 2.0.1
 Authors@R: c(
     person("Oldemar", "Rodriguez R.", email = "oldemar.rodriguez@ucr.ac.cr", role = c("aut","cre")),
     person("Andres", "Navarro D.", role = c("ctb","prg")),
     person("Diego", "Jimenez A.", role = c("ctb","prg")),
     person("Ariel", "Arroyo S.", role = c("ctb","prg")))
 Depends: R (>= 4.1)
-Imports: shiny (>= 1.2.0), golem (>= 0.3.1), echarts4r (>= 0.4.1),
+Imports: shiny (>= 1.7.1), golem (>= 0.3.1), echarts4r (>= 0.4.1),
         shinyAce (>= 0.3.3), shinydashboard (>= 0.7.1),
         shinycustomloader (>= 0.9.0), shinydashboardPlus (>= 2.0.0),
         rlang, shinyjs (>= 1.0), neuralnet (>= 1.44.2), rpart (>=
@@ -21,11 +21,11 @@ Encoding: UTF-8
 URL: https://www.promidat.com
 RoxygenNote: 7.1.1
 NeedsCompilation: no
-Packaged: 2021-09-22 17:47:01 UTC; promidat05
+Packaged: 2021-10-12 17:54:52 UTC; promidat05
 Author: Oldemar Rodriguez R. [aut, cre],
   Andres Navarro D. [ctb, prg],
   Diego Jimenez A. [ctb, prg],
   Ariel Arroyo S. [ctb, prg]
 Maintainer: Oldemar Rodriguez R. <oldemar.rodriguez@ucr.ac.cr>
 Repository: CRAN
-Date/Publication: 2021-09-23 21:20:02 UTC
+Date/Publication: 2021-10-13 14:42:04 UTC

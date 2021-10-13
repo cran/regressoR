@@ -38,7 +38,7 @@ mod_linear_regression_ui <- function(id){
                                   withLoader(DT::dataTableOutput(ns("rlPrediTable")),type = "html", loader = "loader4"))
   
   disp.rl.panel <- tabPanel(title = labelInput("dispersion"), value = "tabRlDisp",
-                            echarts4rOutput(ns('plot_rl_disp'), height = "75vh"))
+                            withLoader(echarts4rOutput(ns('plot_rl_disp'),height = "75vh"),type = "html", loader = "loader4"))
   
   rl.general.index.panel <- tabPanel(title = labelInput("indices"), value = "tabRlIndex",
                                      br(),
@@ -50,13 +50,12 @@ mod_linear_regression_ui <- function(id){
   
   
   page.rl <- tabItem(tabName = "rl",
-                     tabBox(id = ns("BoxRl"), width = NULL, height ="80%",
-                            generate.rl.panel,
-                            coefficients.rl.panel,
-                            prediccion.rl.panel,
-                            disp.rl.panel,
-                            rl.general.index.panel,
-                            tabs.rl))
+                     tabBoxPrmdt(id = ns("BoxRl"), opciones = tabs.rl,
+                                 generate.rl.panel,
+                                 coefficients.rl.panel,
+                                 prediccion.rl.panel,
+                                 disp.rl.panel,
+                                 rl.general.index.panel))
   
   tagList(
     page.rl

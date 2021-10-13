@@ -31,11 +31,14 @@ mod_KNN_ui <- function(id){
                                     codigo.monokai(ns("fieldCodeKnnIG"), height = "7vh"),ns = ns))
   
   
-  tabs.options.generate <- tabsOptions(buttons = list(icon("gear"), icon("code")), widths = c(50,100), heights = c(90,70),
+  tabs.options.generate <- tabsOptions(buttons = list(icon("cog"), icon("code")), widths = c(50,100), heights = c(90,70),
                                        tabs.content = list(knn.options,knn.code.config))
   
   tabs.options.Nogenerate <- tabsOptions(buttons = list(icon("code")), widths = c(100), heights = c(70),
                                          tabs.content = list(knn.code))
+  
+  tabs.options <- list(conditionalPanel("input.BoxKnn == 'tabKknModelo'",tabs.options.generate,ns = ns),
+                       conditionalPanel("input.BoxKnn != 'tabKknModelo'",tabs.options.Nogenerate,ns = ns))
   
   generate.knn.panel <- tabPanel(title = labelInput("generatem"), value = "tabKknModelo",
                                  withLoader(verbatimTextOutput(ns("txtknn")),type = "html", loader = "loader4"))
@@ -44,7 +47,7 @@ mod_KNN_ui <- function(id){
                                    withLoader(DT::dataTableOutput(ns("knnPrediTable")),type = "html", loader = "loader4"))
   
   disp.knn.panel <- tabPanel(title = labelInput("dispersion"), value = "tabKknDisp",
-                             echarts4rOutput(ns('plot_knn_disp'), height = "75vh"))
+                             withLoader(echarts4rOutput(ns('plot_knn_disp'),height = "75vh"),type = "html", loader = "loader4"))
   
   general.index.knn.panel <- tabPanel(title = labelInput("indices"), value = "tabKknIndex",
                                       br(),
@@ -55,13 +58,11 @@ mod_KNN_ui <- function(id){
                                       fluidRow(withLoader(tableOutput(ns('indexdfknn2')),type = "html", loader = "loader4")))
   
   page.knn <- tabItem(tabName = "knn",
-                      tabBox(id = ns("BoxKnn"), width = NULL, height ="80%",
+                      tabBoxPrmdt(id = ns("BoxKnn"), opciones = tabs.options,
                              generate.knn.panel,
                              prediccion.knn.panel,
                              disp.knn.panel,
-                             general.index.knn.panel,
-                             conditionalPanel("input.BoxKnn == 'tabKknModelo'",tabs.options.generate,ns = ns),
-                             conditionalPanel("input.BoxKnn != 'tabKknModelo'",tabs.options.Nogenerate,ns = ns)))
+                             general.index.knn.panel))
   
   tagList(
     page.knn

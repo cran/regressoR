@@ -34,23 +34,26 @@ mod_random_forests_ui <- function(id){
                                     codigo.monokai(ns("fieldCodeRfIG"), height = "7vh"),ns = ns))
   
   
-  tabs.options.generate <- tabsOptions(buttons = list(icon("gear"), icon("code")), widths = c(50,100), heights = c(80,70),
+  tabs.options.generate <- tabsOptions(buttons = list(icon("cog"), icon("code")), widths = c(50,100), heights = c(80,70),
                                        tabs.content = list(rf.options,rf.code.config))
   
   tabs.options.Nogenerate <- tabsOptions(buttons = list(icon("code")), widths = c(100), heights = c(70),
                                          tabs.content = list(rf.code))
   
+  tabs.options <- list(conditionalPanel("input.BoxRf == 'tabRfModelo' || input.BoxRf == 'tabRfRules'",tabs.options.generate,ns = ns),
+                       conditionalPanel("input.BoxRf != 'tabRfModelo' && input.BoxRf != 'tabRfRules'",tabs.options.Nogenerate,ns = ns))
+  
   generate.rf.panel <- tabPanel(title = labelInput("generatem"),value = "tabRfModelo",
                                 withLoader(verbatimTextOutput(ns("txtRf")),type = "html", loader = "loader4"))
   
   plot.rf <- tabPanel(title = labelInput("varImp"), value = "tabRfImp",
-                      echarts4rOutput(ns('plot_rf'), height = "75vh"))
+                      withLoader(echarts4rOutput(ns('plot_rf'),height = "75vh"),type = "html", loader = "loader4"))
   
   prediction.rf.panel <- tabPanel(title = labelInput("predm"), value = "tabRfPred",
                                   withLoader(DT::dataTableOutput(ns("rfPrediTable")),type = "html", loader = "loader4"))
   
   disp.rf.panel <- tabPanel(title = labelInput("dispersion"), value = "tabRfDisp",
-                            echarts4rOutput(ns('plot_rf_disp'), height = "75vh"))
+                            withLoader(echarts4rOutput(ns('plot_rf_disp'),height = "75vh"),type = "html", loader = "loader4"))
   
   general.index.rf.panel <- tabPanel(title = labelInput("indices"), value = "tabRfIndex",
                                      br(),
@@ -64,15 +67,13 @@ mod_random_forests_ui <- function(id){
                              withLoader(verbatimTextOutput(ns("rulesRf")),type = "html", loader = "loader4"))
   
   page.rf <- tabItem(tabName = "rf",
-                     tabBox(id = ns("BoxRf"), width = NULL, height ="80%",
+                     tabBoxPrmdt(id = ns("BoxRf"), opciones = tabs.options,
                             generate.rf.panel,
                             plot.rf,
                             prediction.rf.panel,
                             disp.rf.panel,
                             general.index.rf.panel,
-                            rf.rules.panel,
-                            conditionalPanel("input.BoxRf == 'tabRfModelo' || input.BoxRf == 'tabRfRules'",tabs.options.generate,ns = ns),
-                            conditionalPanel("input.BoxRf != 'tabRfModelo' && input.BoxRf != 'tabRfRules'",tabs.options.Nogenerate,ns = ns)))
+                            rf.rules.panel))
   
   
   tagList(

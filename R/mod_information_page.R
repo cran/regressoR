@@ -15,7 +15,7 @@ mod_information_page_ui <- function(id){
                        infoBoxPROMiDAT(labelInput("copyright"), "PROMiDAT S.A.", icon = icon("copyright")),
                        infoBoxPROMiDAT(labelInput("info"), tags$a( href="https://www.promidat.com/", style = "color:white;",
                                                                    target = "_blank", "https://www.promidat.com"), icon = icon("info")),
-                       infoBoxPROMiDAT(labelInput("version"), "2.0.0", icon = icon("file-code-o")))
+                       infoBoxPROMiDAT(labelInput("version"), "2.0.1", icon = icon("file-code")))
   
   
   tagList(

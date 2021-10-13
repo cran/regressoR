@@ -31,17 +31,20 @@ mod_SVM_ui <- function(id){
                                     codigo.monokai(ns("fieldCodeSvmIG"), height = "7vh"), ns = ns))
   
   
-  tabs.options.generate <- tabsOptions(buttons = list(icon("gear"), icon("code")), widths = c(50,100), heights = c(70,70),
+  tabs.options.generate <- tabsOptions(buttons = list(icon("cog"), icon("code")), widths = c(50,100), heights = c(70,70),
                                        tabs.content = list(svm.options,svm.code.config))
   
   tabs.options.Nogenerate <- tabsOptions(buttons = list(icon("code")), widths = c(100), heights = c(70),
                                          tabs.content = list(svm.code))
   
+  tabs.options <- list(conditionalPanel("input.BoxSvm == 'tabSvmModelo'",tabs.options.generate,ns = ns),
+                       conditionalPanel("input.BoxSvm != 'tabSvmModelo'",tabs.options.Nogenerate,ns = ns))
+  
   generate.svm.panel <- tabPanel(title = labelInput("generatem"), value = "tabSvmModelo",
                                  withLoader(verbatimTextOutput(ns("txtSvm")),type = "html", loader = "loader4"))
   
   disp.svm.panel <- tabPanel(title = labelInput("dispersion"), value = "tabSvmDisp",
-                             echarts4rOutput(ns('plot_svm_disp'), height = "75vh"))
+                             withLoader(echarts4rOutput(ns('plot_svm_disp'),height = "75vh"),type = "html", loader = "loader4"))
   
   prediction.svm.panel <- tabPanel(title = labelInput("predm"), value = "tabSvmPred",
                                    withLoader(DT::dataTableOutput(ns("svmPrediTable")),type = "html", loader = "loader4"))
@@ -55,13 +58,11 @@ mod_SVM_ui <- function(id){
                                       fluidRow(withLoader(tableOutput(ns('indexdfsvm2')),type = "html", loader = "loader4")))
   
   page.svm <- tabItem(tabName = "svm",
-                      tabBox(id = ns("BoxSvm"), width = NULL, height ="80%",
+                      tabBoxPrmdt(id = ns("BoxSvm"), opciones = tabs.options,
                              generate.svm.panel,
                              prediction.svm.panel,
                              disp.svm.panel,
-                             general.index.svm.panel,
-                             conditionalPanel("input.BoxSvm == 'tabSvmModelo'",tabs.options.generate,ns = ns),
-                             conditionalPanel("input.BoxSvm != 'tabSvmModelo'",tabs.options.Nogenerate,ns = ns)))
+                             general.index.svm.panel))
   
   
   tagList(

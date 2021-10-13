@@ -85,6 +85,5 @@ plot_real_prediction <- function(real, prediction, model = "", titles = c("Predi
     e_title(text = paste0(titles[1],"  (",model,")")) |>
     e_axis_labels(x = titles[2], y = titles[3]) |>
     e_tooltip() |>
-    e_datazoom(show = F) |>
-    e_show_loading()
+    e_datazoom(show = F)
 }

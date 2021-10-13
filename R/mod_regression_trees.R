@@ -31,11 +31,14 @@ mod_regression_trees_ui <- function(id){
                                    codigo.monokai(ns("fieldCodeDtRule"), height = "7vh"),ns = ns))
   
   
-  tabs.options.generate <- tabsOptions(buttons = list(icon("gear"), icon("code")), widths = c(50,100), heights = c(70,70),
+  tabs.options.generate <- tabsOptions(buttons = list(icon("cog"), icon("code")), widths = c(50,100), heights = c(70,70),
                                        tabs.content = list(dt.options,dt.code.config))
   
   tabs.options.Nogenerate <- tabsOptions(buttons = list(icon("code")), widths = c(100), heights = c(70),
                                          tabs.content = list(dt.code))
+  
+  tabs.options <- list(conditionalPanel("input.BoxDt == 'tabDtModelo'",tabs.options.generate,ns = ns),
+                       conditionalPanel("input.BoxDt != 'tabDtModelo'",tabs.options.Nogenerate,ns = ns))
   
   generate.dt.panel <- tabPanel(title = labelInput("generatem"), value = "tabDtModelo",
                                 withLoader(verbatimTextOutput(ns("txtDt")),type = "html", loader = "loader4"))
@@ -47,7 +50,7 @@ mod_regression_trees_ui <- function(id){
                                   withLoader(DT::dataTableOutput(ns("dtPrediTable")),type = "html", loader = "loader4"))
   
   disp.dt.panel <- tabPanel(title = labelInput("dispersion"), value = "tabDtDisp",
-                            echarts4rOutput(ns('plot_dt_disp'), height = "75vh"))
+                            withLoader(echarts4rOutput(ns('plot_dt_disp'),height = "75vh"),type = "html", loader = "loader4"))
   
   general.index.dt.panel <- tabPanel(title = labelInput("indices"),value = "tabDtIndex",
                                      br(),
@@ -61,15 +64,13 @@ mod_regression_trees_ui <- function(id){
                              withLoader(verbatimTextOutput(ns("rulesDt")),type = "html", loader = "loader4"))
   
   page.dt <- tabItem(tabName = "dt",
-                     tabBox(id = ns("BoxDt"), width = NULL, height ="80%",
+                     tabBoxPrmdt(id = ns("BoxDt"), opciones = tabs.options,
                             generate.dt.panel,
                             plot.dt,
                             prediction.dt.panel,
                             disp.dt.panel,
                             general.index.dt.panel,
-                            rules.dt.panel,
-                            conditionalPanel("input.BoxDt == 'tabDtModelo'",tabs.options.generate,ns = ns),
-                            conditionalPanel("input.BoxDt != 'tabDtModelo'",tabs.options.Nogenerate,ns = ns)))
+                            rules.dt.panel))
   
   tagList(
     page.dt

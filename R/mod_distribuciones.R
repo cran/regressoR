@@ -33,12 +33,15 @@ mod_distribuciones_ui <- function(id){
                               codigo.monokai(ns("fieldCodeCat"), height = "20vh"))
   
 
-  tabs_dist_numericas <- tabsOptions(buttons = list(icon("gear"), icon("info"), icon("code")),
+  tabs_dist_numericas <- tabsOptions(buttons = list(icon("cog"), icon("info"), icon("code")),
                            widths = c(50, 100, 100), heights = c(50, 50, 35),
                            tabs.content = list(distr.numericas.opc,distr.numericas.atipicos,distr.numericas.code))
   
   tabs_dist_categoricas <- tabsOptions(buttons = list(icon("code")),widths = c(100), heights = c(35),
                                        tabs.content = list(distr.categoricas.code))
+  
+  tabs.options <- list(conditionalPanel("input.tabDyA == 'numericas'",tabs_dist_numericas,ns = ns),
+                       conditionalPanel("input.tabDyA == 'categoricas'",tabs_dist_categoricas,ns = ns))
   
   distribuciones.numericas <- tabPanel(title = labelInput("numericas"), value = "numericas",
                                        echarts4rOutput(ns('plot_num'), height = "75vh"))
@@ -48,12 +51,10 @@ mod_distribuciones_ui <- function(id){
   
   
   page.distributions <- tabItem(tabName = "distribucion",
-                                tabBox(id = ns("tabDyA"), width = NULL,
+                                tabBoxPrmdt(id = ns("tabDyA"), opciones = tabs.options,
                                        title =  titulo_dist,
                                        distribuciones.numericas,
-                                       distribuciones.categoricas,
-                                       conditionalPanel("input.tabDyA == 'numericas'",tabs_dist_numericas,ns = ns),
-                                       conditionalPanel("input.tabDyA == 'categoricas'",tabs_dist_categoricas,ns = ns)))
+                                       distribuciones.categoricas))
   
   tagList(
     page.distributions

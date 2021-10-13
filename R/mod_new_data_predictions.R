@@ -161,8 +161,7 @@ mod_new_data_predictions_ui <- function(id){
   create.pred.model.panel <- div(id = ns("seccion3"), style= "display:none;",fluidRow(
     column(width = 1, actionButton(inputId = ns("btn_prev2"),
                                    label = NULL, icon = icon("backward"), style = btn_style) ),
-    column(width = 10,tabBox(id = ns("BoxModel_New_Data"),
-                             width = 12,
+    column(width = 10,tabBoxPrmdt(id = ns("BoxModel_New_Data"), opciones = tabs.models,
                              tabPanel(title = labelInput("seleParModel"),solidHeader = FALSE, collapsible = FALSE, collapsed = FALSE, value = "crearModelo",
                                       options.model,
                                       conditionalPanel(condition =  "input.selectModelsPred == 'rl'",
@@ -185,8 +184,7 @@ mod_new_data_predictions_ui <- function(id){
                                                        options.rd.pred, ns = ns),
                                       withLoader(verbatimTextOutput(ns("txtPredNuevos")), type = "html", loader = "loader4"),
                                       actionButton(ns("PredNuevosBttnModelo"), labelInput("generarM"), 
-                                                   width  = "100%", style = "background-color:#CBB051;color:#fff;margin-top:9px;")),
-                             tabs.models)),
+                                                   width  = "100%", style = "background-color:#CBB051;color:#fff;margin-top:9px;")))),
     column(width = 1, actionButton(inputId = ns("btn_next3"),
                                    label = NULL, icon = icon("forward"), style = btn_style_hidden) )
   ))
@@ -200,14 +198,13 @@ mod_new_data_predictions_ui <- function(id){
   prediccion.pred.panel <- div(id = ns("seccion5"), style= "display:none;",fluidRow(
     column(width = 1, actionButton(inputId = ns("btn_prev4"),
                                    label = NULL, icon = icon("backward"), style = btn_style) ),
-    column(width = 11,tabBox(id = ns("BoxPrediccion_New_Data"),
-                             width = 12,
-                             tabPanel(title = labelInput("predicnuevos"), value = "predicModelo",
-                                      DT::dataTableOutput(ns("PrediTablePN")),
-                                      hr(),
-                                      downloadButton(ns("downloaDatosPred"), labelInput("descargar"), style = "width:100%"),
-                                      actionButton(ns("predecirPromidat"), "preditc",style="display:none;")),
-                             tabs.models2))))
+    column(width = 11,tabBoxPrmdt(id = ns("BoxPrediccion_New_Data"), opciones = tabs.models2,
+                                  tabPanel(title = labelInput("predicnuevos"), value = "predicModelo",
+                                           DT::dataTableOutput(ns("PrediTablePN")),
+                                           hr(),
+                                           downloadButton(ns("downloaDatosPred"), labelInput("descargar"), style = "width:100%"),
+                                           actionButton(ns("predecirPromidat"), "preditc",style="display:none;"))
+    ))))
   
   
   

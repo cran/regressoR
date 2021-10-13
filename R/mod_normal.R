@@ -49,13 +49,11 @@ mod_normal_ui <- function(id){
                                                selectInput(inputId = ns("sel_normal"), label = NULL, choices =  ""),ns = ns))
   
   page.test.normality <- tabItem(tabName = "normalidad",
-                                 tabBox(id = ns("BoxNormal"),
-                                        width = 12, 
+                                 tabBoxPrmdt(id = ns("BoxNormal"), opciones = tabs.normal,
                                         title = normal.options,
                                         num.normal.plot.panel,
                                         qplot,
-                                        resumen.test,
-                                        tabs.normal))
+                                        resumen.test))
   
   tagList(
     page.test.normality

@@ -42,30 +42,33 @@ mod_dimension_reduction_ui <- function(id){
   
   
   
-  tabs.options.generate <- tabsOptions(buttons = list(icon("gear"), icon("code")), widths = c(50,100), heights = c(80,70),
+  tabs.options.generate <- tabsOptions(buttons = list(icon("cog"), icon("code")), widths = c(50,100), heights = c(80,70),
                                        tabs.content = list(rd.options,rd.code.config))
   
   tabs.options.Nogenerate <- tabsOptions(buttons = list(icon("code")), widths = c(100), heights = c(70),
                                          tabs.content = list(rd.code))
+  
+  tabs.options <- list(conditionalPanel("input.BoxRd == 'tabRdModelo'",tabs.options.generate,ns = ns),
+                       conditionalPanel("input.BoxRd != 'tabRdModelo'",tabs.options.Nogenerate,ns = ns))
   
   
   generate.rd.panel <- tabPanel(title = labelInput("generatem"),value = "tabRdModelo",
                                 withLoader(verbatimTextOutput(ns("txtRd")),type = "html", loader = "loader4"))
   
   rmse.rd.panel <- tabPanel(title = labelInput("RMSE"),value = "tabRdRMSE",
-                            echarts4rOutput(ns('plot_rd_rmse'), height = "75vh"))
+                            withLoader(echarts4rOutput(ns('plot_rd_rmse'),height = "75vh"),type = "html", loader = "loader4"))
   
   plot.pred.rd.panel <- tabPanel(title = labelInput("RdPred"), value = "tabRdPlotPred",
-                                 echarts4rOutput(ns('plot_rd_pred'), height = "75vh"))
+                                 withLoader(echarts4rOutput(ns('plot_rd_pred'),height = "75vh"),type = "html", loader = "loader4"))
   
   panel.plot.var.pred.rd <- tabPanel(title = labelInput("RdVarPred"), value = "tabRdPlotVarPred",
-                                     echarts4rOutput(ns('plot_rd_var_pred'), height = "75vh"))
+                                     withLoader(echarts4rOutput(ns('plot_rd_var_pred'),height = "75vh"),type = "html", loader = "loader4"))
   
   prediction.rd.panel <- tabPanel(title = labelInput("predm"), value = "tabRdPred",
                                   withLoader(DT::dataTableOutput(ns("rdPrediTable")),type = "html", loader = "loader4"))
   
   disp.rd.panel <- tabPanel(title = labelInput("dispersion"), value = "tabRdDisp",
-                            echarts4rOutput(ns('plot_rd_disp'), height = "75vh"))
+                            withLoader(echarts4rOutput(ns('plot_rd_disp'),height = "75vh"),type = "html", loader = "loader4"))
   
   general.index.rd.panel <- tabPanel(title = labelInput("indices"), value = "tabRdIndex",
                                      br(),
@@ -76,16 +79,14 @@ mod_dimension_reduction_ui <- function(id){
                                      fluidRow(withLoader(tableOutput(ns('indexdfrd2')),type = "html", loader = "loader4")))
   
   page.rd <- tabItem(tabName = "rd",
-                     tabBox(id = ns("BoxRd"), width = NULL, height ="80%",
+                     tabBoxPrmdt(id = ns("BoxRd"), opciones = tabs.options,
                             generate.rd.panel,
                             rmse.rd.panel,
                             plot.pred.rd.panel,
                             panel.plot.var.pred.rd,
                             prediction.rd.panel,
                             disp.rd.panel,
-                            general.index.rd.panel,
-                            conditionalPanel("input.BoxRd == 'tabRdModelo'",tabs.options.generate,ns = ns),
-                            conditionalPanel("input.BoxRd != 'tabRdModelo'",tabs.options.Nogenerate,ns = ns)))
+                            general.index.rd.panel))
   
   
   tagList(

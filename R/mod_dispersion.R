@@ -28,9 +28,8 @@ mod_dispersion_ui <- function(id){
   
   
   dispersion.page <- tabItem(tabName = "dispersion",
-                             tabBox(id = ns("BoxDisp"), width = NULL, title = titulo_disp,
-                                    dispersion.plot,
-                                    tabs.dispersion))
+                             tabBoxPrmdt(id = ns("BoxDisp"), opciones = tabs.dispersion,
+                                         title = titulo_disp,dispersion.plot))
   
   tagList(
     dispersion.page

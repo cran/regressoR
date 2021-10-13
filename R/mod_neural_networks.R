@@ -36,15 +36,18 @@ mod_neural_networks_ui <- function(id){
                   conditionalPanel("input.BoxNn == 'tabNnIndex'",
                                    codigo.monokai(ns("fieldCodeNnIG"), height = "7vh"),ns = ns))
   
-  tabs.nn <- tabsOptions(buttons = list(icon("gear"),icon("code")), widths = c(75,100), heights = c(95, 95),
+  tabs.nn <- tabsOptions(buttons = list(icon("cog"),icon("code")), widths = c(75,100), heights = c(95, 95),
                          tabs.content = list(nn.options, nn.code))
   
   
-  tabs.options.generate <- tabsOptions(buttons = list(icon("gear"), icon("code")), widths = c(50,100), heights = c(80,70),
+  tabs.options.generate <- tabsOptions(buttons = list(icon("cog"), icon("code")), widths = c(50,100), heights = c(80,70),
                                        tabs.content = list(nn.options,nn.code.config))
   
   tabs.options.Nogenerate <- tabsOptions(buttons = list(icon("code")), widths = c(100), heights = c(70),
                                          tabs.content = list(nn.code))
+  
+  tabs.options <- list(conditionalPanel("input.BoxNn == 'tabNnModelo'",tabs.options.generate,ns = ns),
+                       conditionalPanel("input.BoxNn != 'tabNnModelo'",tabs.options.Nogenerate,ns = ns))
   
   
   plot.nn <- tabPanel(title = labelInput("redPlot"), value = "tabNnPlot",
@@ -57,7 +60,7 @@ mod_neural_networks_ui <- function(id){
                                   withLoader(DT::dataTableOutput(ns("nnPrediTable")),type = "html", loader = "loader4"))
   
   disp.nn.panel <- tabPanel(title = labelInput("dispersion"), value = "tabNnDisp",
-                            echarts4rOutput(ns('plot_nn_disp'), height = "75vh"))
+                            withLoader(echarts4rOutput(ns('plot_nn_disp'),height = "75vh"),type = "html", loader = "loader4"))
   
   general.index.nn.panel <- tabPanel(title = labelInput("indices"), value = "tabNnIndex",
                                      br(),
@@ -68,14 +71,12 @@ mod_neural_networks_ui <- function(id){
                                      fluidRow(withLoader(tableOutput(ns('indexdfnn2')),type = "html", loader = "loader4")))
   
   page.nn  <- tabItem(tabName = "nn",
-                      tabBox(id = ns("BoxNn"), width = NULL, height ="80%",
+                      tabBoxPrmdt(id = ns("BoxNn"), opciones = tabs.options,
                              generate.nn.panel,
                              plot.nn,
                              prediction.nn.panel,
                              disp.nn.panel,
-                             general.index.nn.panel,
-                             conditionalPanel("input.BoxNn == 'tabNnModelo'",tabs.options.generate,ns = ns),
-                             conditionalPanel("input.BoxNn != 'tabNnModelo'",tabs.options.Nogenerate,ns = ns)))
+                             general.index.nn.panel))
   
   
   tagList(

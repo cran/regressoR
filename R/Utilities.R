@@ -551,15 +551,7 @@ colourInput <- function (inputId, label, value = "white", showColour = c("both",
   showColour <- match.arg(showColour)
   palette <- match.arg(palette)
   value <- restoreInput(id = inputId, default = value)
-  shiny::addResourcePath("colourpicker-binding", system.file("srcjs", 
-                                                             package = "colourpicker"))
-  shiny::addResourcePath("colourpicker-lib", system.file("www", 
-                                                         "shared", "colourpicker", package = "colourpicker"))
-  deps <- list(htmltools::htmlDependency("colourpicker-binding", 
-                                         "0.1.0", c(href = "colourpicker-binding"), script = "input_binding_colour.js"), 
-               htmltools::htmlDependency("colourpicker-lib", "0.1.0", 
-                                         c(href = "colourpicker-lib"), script = "js/colourpicker.min.js", 
-                                         stylesheet = "css/colourpicker.min.css"))
+  
   inputTag <- shiny::tags$input(id = inputId, type = "text", 
                                 class = "form-control shiny-colour-input", `data-init-value` = value, 
                                 `data-show-colour` = showColour, `data-palette` = palette)
@@ -578,7 +570,6 @@ colourInput <- function (inputId, label, value = "white", showColour = c("both",
   }
   inputTag <- shiny::div(class = "form-group shiny-input-container", 
                          `data-shiny-input-type` = "colour", label, inputTag)
-  htmltools::attachDependencies(inputTag, deps)
 }
 
 #---------------------------jsonlite---------------------------

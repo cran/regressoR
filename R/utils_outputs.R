@@ -30,8 +30,8 @@ tabBoxPrmdt <- function (..., id = NULL, title = NULL, opciones = NULL) {
       content$children[[1]], tags$li(class = "header pull-right", title))
   }
   if (!is.null(opciones)) {
-    pos <- length(content$children[[2]]$children[[1]]) + 1
-    content$children[[2]]$children[[1]][[pos]] <- opciones
+    pos <- length(content$children[[2]]$children) + 1
+    content$children[[2]]$children[[pos]] <- opciones
   }
   
   content
@@ -51,7 +51,7 @@ tabBoxPrmdt <- function (..., id = NULL, title = NULL, opciones = NULL) {
 #' @return shiny.tag
 #' @noRd
 #' 
-tabsOptions <- function(buttons = list(icon("gear"), icon("terminal")), widths = c(50, 100),
+tabsOptions <- function(buttons = list(icon("cog"), icon("terminal")), widths = c(50, 100),
                         heights = c(100, 50), tabs.content = list("", "")){
   res <- ""
   codeButtons <- ""

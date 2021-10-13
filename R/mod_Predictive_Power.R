@@ -25,10 +25,8 @@ mod_Predictive_Power_ui <- function(id){
                                           type = "html", loader = "loader4"))
   
   pagina.poder <- tabItem(tabName = "poderPred",
-                          tabBox(id = ns("BoxPodPred"), width = NULL,
-                                 power.plot.pairs,
-                                 tabs.power.num))
-  
+                          tabBoxPrmdt(id = ns("BoxPodPred"), opciones = tabs.power.num,
+                                 power.plot.pairs))
   
   
   tagList(

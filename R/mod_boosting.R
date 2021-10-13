@@ -32,23 +32,26 @@ mod_boosting_ui <- function(id){
                                    codigo.monokai(ns("fieldCodeBoostingIG"), height = "7vh"),ns = ns))
   
   
-  tabs.options.generate <- tabsOptions(buttons = list(icon("gear"), icon("code")), widths = c(50,100), heights = c(80,70),
+  tabs.options.generate <- tabsOptions(buttons = list(icon("cog"), icon("code")), widths = c(50,100), heights = c(80,70),
                                        tabs.content = list(b.options,b.code.config))
   
   tabs.options.Nogenerate <- tabsOptions(buttons = list(icon("code")), widths = c(100), heights = c(70),
                                          tabs.content = list(b.code))
   
+  tabs.options <- list(conditionalPanel("input.BoxB == 'tabBModelo'",tabs.options.generate,ns = ns),
+                       conditionalPanel("input.BoxB != 'tabBModelo'",tabs.options.Nogenerate,ns = ns))
+  
   generate.b.panel <- tabPanel(title = labelInput("generatem"), value = "tabBModelo",
                                withLoader(verbatimTextOutput(ns("txtBoosting")),type = "html", loader = "loader4"))
   
   plot.boosting.import <- tabPanel(title = labelInput("varImp"), value = "tabBImp",
-                                   echarts4rOutput(ns('plot_boosting_import'), height = "75vh"))
+                                   withLoader(echarts4rOutput(ns('plot_boosting_import'),height = "75vh"),type = "html", loader = "loader4"))
   
   prediction.b.panel <- tabPanel(title = labelInput("predm"), value = "tabBPred",
                                  withLoader(DT::dataTableOutput(ns("boostingPrediTable")),type = "html", loader = "loader4"))
   
   disp.boosting.panel <- tabPanel(title = labelInput("dispersion"), value = "tabBDisp",
-                                  echarts4rOutput(ns('plot_boosting_disp'), height = "75vh"))
+                                  withLoader(echarts4rOutput(ns('plot_boosting_disp'),height = "75vh"),type = "html", loader = "loader4"))
   
   general.index.b.panel <- tabPanel(title = labelInput("indices"),value = "tabBIndex",
                                     br(),
@@ -59,14 +62,12 @@ mod_boosting_ui <- function(id){
                                     fluidRow(withLoader(tableOutput(ns('indexdfb2')),type = "html", loader = "loader4")))
   
   pagina.boosting <- tabItem(tabName = "boosting",
-                             tabBox(id = ns("BoxB"), width = NULL, height ="80%",
+                             tabBoxPrmdt(id = ns("BoxB"), opciones = tabs.options,
                                     generate.b.panel,
                                     plot.boosting.import,
                                     prediction.b.panel,
                                     disp.boosting.panel,
-                                    general.index.b.panel,
-                                    conditionalPanel("input.BoxB == 'tabBModelo'",tabs.options.generate,ns = ns),
-                                    conditionalPanel("input.BoxB != 'tabBModelo'",tabs.options.Nogenerate,ns = ns)))
+                                    general.index.b.panel))
   
   tagList(
     pagina.boosting

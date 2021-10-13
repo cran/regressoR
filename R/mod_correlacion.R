@@ -30,20 +30,20 @@ mod_correlacion_ui <- function(id){
   corr.table.code <- list(h3(labelInput("codigo")), hr(style = "margin-top: 0px;"),
                           codigo.monokai(ns("fieldCodeCor2"),  height = "10vh"))
   
-  tabs.plot <- tabsOptions(buttons = list(icon("gear"), icon("code")),heights = c(70, 50),
+  tabs.plot <- tabsOptions(buttons = list(icon("cog"), icon("code")),heights = c(70, 50),
                            tabs.content = list(corr.plot.opc,corr.plot.code))
   
   tabs.table <- tabsOptions(buttons = list(icon("code")), widths = c(100), heights = c(40),
                             tabs.content = list(corr.table.code))
+  
+  tabs.options <- list(conditionalPanel("input.tabCor == 'correlacion'",tabs.plot,ns = ns),
+                       conditionalPanel("input.tabCor != 'correlacion'",tabs.table,ns = ns))
 
   
   page.correlations <- tabItem(tabName = "correlacion",
-                               tabBox(id = ns("tabCor"), width = NULL,
+                               tabBoxPrmdt(id = ns("tabCor"), opciones = tabs.options,
                                       correlation.plot,
-                                      results.table.correlations,
-                                      conditionalPanel("input.tabCor == 'correlacion'",tabs.plot,ns = ns),
-                                      conditionalPanel("input.tabCor != 'correlacion'",tabs.table,ns = ns)
-                                      ))
+                                      results.table.correlations))
   
   tagList(
     page.correlations

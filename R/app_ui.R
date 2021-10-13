@@ -30,25 +30,25 @@
 app_ui <- function(request) {
   
   # MENU --------------------------------------------------------------------------------------------------------------------
-  load.menu <- menuItem(labelInput("data"), tabName = "cargar", icon = icon("dashboard"))
+  load.menu <- menuItem(labelInput("data"), tabName = "cargar", icon = icon("database"))
   
   
   statistics.menu <- menuItem(labelInput("basico"), tabName = "parte1", icon = icon("th-list"),
-                              menuSubItem(labelInput("resumen"), tabName = "resumen", icon = icon("sort-numeric-asc")),
-                              menuSubItem(labelInput("normalidad"), tabName = "normalidad", icon = icon("bar-chart")),
-                              menuSubItem(labelInput("dispersion"), tabName = "dispersion", icon = icon("line-chart")),
-                              menuSubItem(labelInput("distribucion"), tabName = "distribucion", icon = icon("area-chart")),
+                              menuSubItem(labelInput("resumen"), tabName = "resumen", icon = icon("sort-numeric-down")),
+                              menuSubItem(labelInput("normalidad"), tabName = "normalidad", icon = icon("chart-bar")),
+                              menuSubItem(labelInput("dispersion"), tabName = "dispersion", icon = icon("chart-line")),
+                              menuSubItem(labelInput("distribucion"), tabName = "distribucion", icon = icon("chart-area")),
                               menuSubItem(labelInput("correlacion"), tabName = "correlacion", icon = icon("table")),
                               menuItem(labelInput("poderpred"), tabName = "poderPred", icon = icon("rocket")))
   
   supervised.learning.menu    <- menuItem(labelInput("aprendizaje"), tabName = "parte2", icon = icon("th-list"),
-                                          menuSubItem(labelInput("rl"),tabName = "rl",icon = icon("line-chart")),
-                                          menuSubItem(labelInput("rlr"),tabName = "rlr",icon = icon("line-chart")),
+                                          menuSubItem(labelInput("rl"),tabName = "rl",icon = icon("chart-line")),
+                                          menuSubItem(labelInput("rlr"),tabName = "rlr",icon = icon("chart-line")),
                                           menuSubItem(labelInput("dt"),tabName = "dt",icon = icon("tree")),
                                           menuSubItem(labelInput("rf"),tabName = "rf",icon = icon("sitemap")),
                                           menuSubItem(labelInput("boost"),tabName = "boosting",icon = icon("superscript")),
-                                          menuSubItem(labelInput("knn"),tabName = "knn",icon = icon("dot-circle-o")),
-                                          menuSubItem(labelInput("svm"),tabName = "svm",icon = icon("line-chart")),
+                                          menuSubItem(labelInput("knn"),tabName = "knn",icon = icon("dot-circle")),
+                                          menuSubItem(labelInput("svm"),tabName = "svm",icon = icon("chart-line")),
                                           menuSubItem(labelInput("rd"), tabName = "rd",icon = icon("chart-pie")),
                                           menuSubItem(labelInput("nn"),tabName = "nn",icon = icon("brain")))
   
@@ -114,6 +114,7 @@ app_ui <- function(request) {
     dashboardPage(
       title="PROMiDAT - RegressoR",
       shinydashboardPlus::dashboardHeader(
+        controlbarIcon = icon("cogs"),
         title = HTML(paste0(
           '<span class = "logo-lg">
             <a href = "https://promidat.com" target = "_blank">

@@ -44,30 +44,33 @@ mod_penalized_Regression_ui <- function(id){
                     conditionalPanel("input.BoxRlr == 'tabRlrIndex'",
                                      codigo.monokai(ns("fieldCodeRlrIG"),height = "7vh"),ns = ns))
   
-  tabs.options.generate <- tabsOptions(buttons = list(icon("gear"), icon("code")), widths = c(50,100), heights = c(80,70),
+  tabs.options.generate <- tabsOptions(buttons = list(icon("cog"), icon("code")), widths = c(50,100), heights = c(80,70),
                                        tabs.content = list(rlr.options,rlr.code.config))
   
   tabs.options.Nogenerate <- tabsOptions(buttons = list(icon("code")), widths = c(100), heights = c(70),
                                          tabs.content = list(rlr.code))
+  
+  tabs.options <- list(conditionalPanel("input.BoxRlr == 'tabRlrModelo'",tabs.options.generate,ns = ns),
+                       conditionalPanel("input.BoxRlr != 'tabRlrModelo'",tabs.options.Nogenerate,ns = ns))
   
   
   generate.rlr.panel <- tabPanel(title = labelInput("generatem"),value = "tabRlrModelo",
                                  withLoader(verbatimTextOutput(ns("txtRlr")),type = "html", loader = "loader4"))
   
   posib.landa.rlr.panel <- tabPanel(title = labelInput("posibLanda"),value = "tabRlrPosibLanda",
-                                    echarts4rOutput(ns('plot_rlr_posiblanda'), height = "80vh"))
+                                    withLoader(echarts4rOutput(ns('plot_rlr_posiblanda'),height = "75vh"),type = "html", loader = "loader4"))
   
   coeff.rlr.panel <- tabPanel(title = labelInput("coeff"),value = "tabRlrCoeff",
                               withLoader(DT::dataTableOutput(ns("dtRlrCoeff")),type = "html", loader = "loader4"))
   
   landa.rlr.panel <- tabPanel(title = labelInput("gcoeff"),value = "tabRlrCoeff_landa",
-                              echarts4rOutput(ns('plot_rlr_Coeff_landa'), height = "75vh"))
+                              withLoader(echarts4rOutput(ns('plot_rlr_Coeff_landa'),height = "75vh"),type = "html", loader = "loader4"))
   
   prediccion.rlr.panel <- tabPanel(title = labelInput("predm"), value = "tabRlrPred",
                                    withLoader(DT::dataTableOutput(ns("rlrPrediTable")),type = "html", loader = "loader4"))
   
   disp.rlr.panel <- tabPanel(title = labelInput("dispersion"), value = "tabRlrDisp",
-                             echarts4rOutput(ns('plot_rlr_disp'), height = "75vh"))
+                             withLoader(echarts4rOutput(ns('plot_rlr_disp'),height = "75vh"),type = "html", loader = "loader4"))
   
   rlr.general.index.panel <- tabPanel(title = labelInput("indices"), value = "tabRlrIndex",
                                       br(),
@@ -79,17 +82,14 @@ mod_penalized_Regression_ui <- function(id){
   
   
   page.rlr <- tabItem(tabName = "rlr",
-                      tabBox(id = ns("BoxRlr"), width = NULL, height ="80%",
+                      tabBoxPrmdt(id = ns("BoxRlr"), opciones = tabs.options,
                              generate.rlr.panel,
                              posib.landa.rlr.panel,
                              landa.rlr.panel,
                              coeff.rlr.panel,
                              prediccion.rlr.panel,
                              disp.rlr.panel,
-                             rlr.general.index.panel,
-                             conditionalPanel("input.BoxRlr == 'tabRlrModelo'",tabs.options.generate,ns = ns),
-                             conditionalPanel("input.BoxRlr != 'tabRlrModelo'",tabs.options.Nogenerate,ns = ns)
-                      ))
+                             rlr.general.index.panel))
   
   tagList(
     page.rlr
