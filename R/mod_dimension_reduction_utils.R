@@ -34,13 +34,6 @@ rd_model <- function(data, variable.pred, mode = 0, scale = TRUE){
   else{
     return(NULL)
   }
-  
-  # if(mode == 0){
-  #   x <- paste0(model.var," <- pcr(`",variable.pred,"`~.,data = ",data,", scale = ",scale,", validation = 'CV')")
-  # }else{
-  #   x <- paste0(model.var," <- plsr(`",variable.pred,"`~.,data = ",data,", scale = ",scale,", validation = 'CV')")
-  # }
-  # paste0(x,"\n",n.comp, " <- which.min(RMSEP(",model.var,")$val[1, 1, ]) - 1")
 }
 
 #' rd_prediction
@@ -59,7 +52,6 @@ rd_prediction <- function(model, test.data, ncomp = NULL) {
     return(predict(model,test.data, ncomp = ncomp))
   }
   return(NULL)
-  #paste0(pred.var," <- predict(",model.var,", ",data,", ncomp = ",ncomp,")")
 }
 
 #' rd_type
@@ -83,7 +75,6 @@ rd_type <- function(mode.rd = 0){
   else if(mode.rd == 1){ tipo <- "MCP" }
   return(tipo)
 }
-
 
 
 #' plot_RMSE
@@ -328,16 +319,3 @@ plot_var_pred_rd <- function(model, n.comp, titles = c("Varianza Explicada en Va
     e_show_loading()
 }
 
-
-#------------------------------------CODE---------------------------------------
-codeRd <- function(variable.predecir, mode, scale){
-  return(paste0("rd_model(data, '",variable.predecir,"', mode = ",mode, ", scale = ", scale, ")"))
-}
-
-codeRdPred <- function(nombreModelo, ncomp){
-  return(paste0("rd_prediction(model = ", nombreModelo, ", test.data, ncomp = ", ncomp, ")"))
-}
-
-codeRdIG <- function(variable.predecir){
-  return(paste0("general_indices(test.data[,'",variable.predecir,"'], prediccion.rd)"))
-}

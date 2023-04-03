@@ -63,3 +63,26 @@ rv <- shiny::reactiveValues
 rvtl <- shiny::reactiveValuesToList
 
 ########################################################
+
+load("inst/app/lang/translation.bin") # Load translation.bin (dictionary to change language)
+translation <- append(translation, loadeR::translation.loadeR())
+
+tr <- function(text, idioma = "es") {
+  sapply(text, function(s) {
+    elem <- ifelse(is.null(translation[[s]][[idioma]]), s,
+                   translation[[s]][[idioma]])
+    Encoding(elem) <- "utf8"
+    
+    elem
+  }, USE.NAMES = F)
+}
+# Función para generar diccionario.
+#
+# crear.traslation <- function() {
+#    library(plyr)
+#    archivo <- read.table("diccionario.csv", header = TRUE, sep = ";", as.is = TRUE)
+#    translation <- dlply(archivo , .(key), function(s) key = as.list(s))
+# 
+#    save(translation, file = "translation.bin")
+#  }
+

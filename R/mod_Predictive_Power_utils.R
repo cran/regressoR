@@ -4,8 +4,6 @@
 #' @param data A DataFrame
 #' @param decimals Number of numbers after the decimal point.
 #'
-#' @seealso \code{\link[psych]{pairs.panels}}
-#'
 #' @export
 #'
 pairs_power <- function(data, decimals = 2){

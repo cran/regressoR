@@ -1,48 +1,14 @@
 $(document).ready(function() {
-  
+ //   document.querySelectorAll("[data-value = \'<span data-id=\"cros\"></span>\']")[0].style.display = "none";
+
   $(".sidebar").on("click", ".disabled", function (e) {
     e.preventDefault();
     return false;
   });
-  
-  $("[data-widget='left']").click(function() {
-    var a = $(this).parents(".tab-content").first();
-    a.removeClass("box-option-open-centerleft");
-    a.removeClass("box-option-open-center");
-    a.removeClass("box-option-open-centeright");
-    a.removeClass("box-option-open-right");
-    a.toggleClass("box-option-open-left");
-  });
-  $("[data-widget='centerleft']").click(function() {
-    var a = $(this).parents(".tab-content").first();
-    a.removeClass("box-option-open-left");
-    a.removeClass("box-option-open-center");
-    a.removeClass("box-option-open-centeright");
-    a.removeClass("box-option-open-right");
-    a.toggleClass("box-option-open-centerleft");
-  });
-  $("[data-widget='centeright']").click(function() {
-    var a = $(this).parents(".tab-content").first();
-    a.removeClass("box-option-open-centerleft");
-    a.removeClass("box-option-open-center");
-    a.removeClass("box-option-open-left");
-    a.removeClass("box-option-open-right");
-    a.toggleClass("box-option-open-centeright");
-  });
-  $("[data-widget='center']").click(function() {
-    var a = $(this).parents(".tab-content").first();
-    a.removeClass("box-option-open-centerleft");
-    a.removeClass("box-option-open-left");
-    a.removeClass("box-option-open-centeright");
-    a.removeClass("box-option-open-right");
-    a.toggleClass("box-option-open-center");
-  });
-  $("[data-widget='right']").click(function() {
-    var a = $(this).parents(".tab-content").first();
-    a.removeClass("box-option-open-centerleft");
-    a.removeClass("box-option-open-center");
-    a.removeClass("box-option-open-centeright");
-    a.removeClass("box-option-open-left");
-    a.toggleClass("box-option-open-right");
-  });
+    $("#carga_datos_ui_1-run_pred").click(function() {
+  var results = document.getElementsByClassName('treeview-menu')
+  for (let i = 0; i < results.length; i++) {
+  results[i].style.display = "none"
+  }
+  })
 });

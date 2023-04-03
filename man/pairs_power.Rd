@@ -14,6 +14,3 @@ pairs_power(data, decimals = 2)
 \description{
 Generate a pair chart
 }
-\seealso{
-\code{\link[psych]{pairs.panels}}
-}

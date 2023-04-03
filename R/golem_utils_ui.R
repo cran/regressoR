@@ -314,18 +314,6 @@ col_1 <- function(...){
 }
 
 
-#Boton para ejecutar los modelos
-options.run <- function(runid) {
-  tags$div(
-    style = "display: inline-block; width: 100%", 
-    shiny::h3(labelInput("opciones"), 
-              style = "float: left;margin-bottom: 0px;margin-top: 0px;"),
-    tags$button(
-      id = runid, type = "button", class = "run-button action-button", 
-      icon("play"), tags$a(labelInput("ejecutar"), style = "color:white;"), style = "font-size: 24px;"))
-}
-
-
 # Cierra un menú según su tabName
 close.menu <- function(tabname = NA, valor = T) {
   select <- paste0("a[href^='#shiny-tab-", tabname, "']")

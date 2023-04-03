@@ -2,6 +2,74 @@
     width: 100%;
 }
 
+.wrapper-tag {
+	  text-align: center;
+		color: #fff;
+		font-size: 15px;
+		font-weight: 700;
+		background: linear-gradient(to right,#CBB051 10%, #777777 50%, #CBB051 60%);
+		background-size: auto auto;
+		background-clip: border-box;
+		background-size: 200% auto;
+		color: #fff;
+		background-clip: text;
+		text-fill-color: transparent;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: textclip 1.5s linear infinite;
+		display: inline-block;
+	
+}
+
+.wrapper-tag2 {
+	  text-align: center;
+		color: #fff;
+		font-size: 15px;
+		font-weight: 700;
+		background: linear-gradient(to right,#ffffff 10%, #777777 50%, #ffffff 60%);
+		background-size: auto auto;
+		background-clip: border-box;
+		background-size: 200% auto;
+		color: #fff;
+		background-clip: text;
+		text-fill-color: transparent;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: textclip 1.5s linear infinite;
+		display: inline-block;
+	
+}
+
+#ind_nuevos_ui_1-predecirPromidat,#ind_nuevos_ui_1-transback2  {
+  display:none;
+}
+
+@keyframes textclip {
+	to {
+		background-position: 200% center;
+	}
+}
+
+/* selectInput Posicionar Horizontal */
+.multiple-select-var{
+  float: right;
+  width: 300px;
+  margin-bottom: -3px;
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 0;
+}
+
+/* Color Inputs */
+.select-color {
+  width: 50%;
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  float: left;
+  margin-bottom: -5px;
+}
+
 /* radioSwitch */
 
 .radioGroupButtons {
@@ -53,38 +121,4 @@
 }
 .btn.radiobtn .radio-btn-icon-no {
 	opacity: 1; display: inline-block;
-}
-
-
-/*radioGroupMulti*/
-.btn-radiogroup-multi {
-    padding-right: 3px !important;
-    padding-bottom: 3px !important;
-    width: auto !important;
-}
-
-
-/* Color Inputs */
-.select-color {
-  width: 50%;
-  position: relative;
-  min-height: 1px;
-  padding-left: 10px;
-  float: left;
-  margin-bottom: -5px;
-}
-
-/* Run Button */
-
-.run-button {
-  padding-left: 10px;
-  background: transparent;
-  color: green;
-  border: 0;
-  font-size: 15px;
-  float: right;
-}
-
-.run-button:active {
-  transform: translateY(4px);
 }

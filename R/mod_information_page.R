@@ -13,9 +13,9 @@ mod_information_page_ui <- function(id){
   page.info <- tabItem(tabName = "acercaDe",
                        img(src="img/Logo.png", style="padding-bottom:20px;margin-left: auto;margin-right: auto;display: block;width: 50%;"),
                        infoBoxPROMiDAT(labelInput("copyright"), "PROMiDAT S.A.", icon = icon("copyright")),
-                       infoBoxPROMiDAT(labelInput("info"), tags$a( href="https://www.promidat.com/", style = "color:white;",
-                                                                   target = "_blank", "https://www.promidat.com"), icon = icon("info")),
-                       infoBoxPROMiDAT(labelInput("version"), "2.0.1", icon = icon("file-code")))
+                       infoBoxPROMiDAT(labelInput("info"), tags$a( href="https://www.promidat.website/", style = "color:white;",
+                                                                   target = "_blank", "https://www.promidat.website"), icon = icon("info")),
+                       infoBoxPROMiDAT(labelInput("version"), "3.0.0", icon = icon("file-code")))
   
   
   tagList(
@@ -26,7 +26,7 @@ mod_information_page_ui <- function(id){
 #' information_page Server Function
 #'
 #' @noRd 
-mod_information_page_server <- function(input, output, session){
+mod_information_page_server <- function(input, output, session, codedioma){
   ns <- session$ns
 }
     
