@@ -1,13 +1,10 @@
 Title: Regression Data Analysis System
 Package: regressoR
 Type: Package
-Version: 3.0.0
+Version: 3.0.2
 Authors@R: c(
     person("Oldemar", "Rodriguez", email = "oldemar.rodriguez@ucr.ac.cr", role = c("aut","cre")),
-    person("Andres", "Navarro D.", role = c("ctb","prg")),
-    person("Diego", "Jimenez A.", role = c("ctb","prg")),
-    person("Ariel", "Arroyo S.", role = c("ctb","prg")),
-    person("Joseline", "Quiros M.", role = c("ctb","prg")))
+    person("Diego", "Jimenez A.", role = c("ctb","prg")))
 Depends: R (>= 4.1)
 Imports: DT (>= 0.27), pls (>= 2.8-1), dplyr (>= 1.1.0), shiny (>=
         1.7.4), golem (>= 0.3.5), rlang (>= 1.0.6), glmnet (>= 4.1-6),
@@ -22,12 +19,9 @@ URL: https://promidat.website/,https://github.com/PROMiDAT/regressoR
 BugReports: https://github.com/PROMiDAT/predictoR/issues
 RoxygenNote: 7.1.2
 NeedsCompilation: no
-Packaged: 2023-03-28 15:30:56 UTC; promidat06
+Packaged: 2023-06-28 21:38:44 UTC; promidat05
 Author: Oldemar Rodriguez [aut, cre],
-  Andres Navarro D. [ctb, prg],
-  Diego Jimenez A. [ctb, prg],
-  Ariel Arroyo S. [ctb, prg],
-  Joseline Quiros M. [ctb, prg]
+  Diego Jimenez A. [ctb, prg]
 Maintainer: Oldemar Rodriguez <oldemar.rodriguez@ucr.ac.cr>
 Repository: CRAN
-Date/Publication: 2023-04-03 23:10:02 UTC
+Date/Publication: 2023-06-29 16:40:02 UTC

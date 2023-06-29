@@ -31,8 +31,10 @@ mod_cross_validation_ui <- function(id){
                       col_6(selectInput(inputId = ns("kernel.svm.pred"), label = labelInput("selkernel"),selected = "radial",
                                         choices = c("linear", "polynomial", "radial", "sigmoid")))))
   
-  opc_rf  <- list(div(col_6(numericInput(ns("ntree.rf.pred"), labelInput("numTree"), 20, width = "100%", min = 0)),
-                      col_6(numericInput(ns("mtry.rf.pred"),  labelInput("numVars"),1, width = "100%", min = 1))))
+  opc_rf  <- list(div(col_4(numericInput(ns("ntree.rf.pred"), labelInput("numTree"), 20, width = "100%", min = 0)),
+                      col_4(numericInput(ns("mtry.rf.pred"),  labelInput("numVars"),1, width = "100%", min = 1)),
+                      col_4(selectInput(inputId = ns("split.rf.pred"), label = labelInput("splitIndex"),selected = 1,
+                                        choices =  list("gini" = "gini", "Entropia" = "information")))))
   
   opc_dt  <- list(div(col_4(numericInput(ns("minsplit.dt.pred"), labelInput("minsplit"), 20, width = "100%",min = 1)),
                       col_4(numericInput(ns("maxdepth.dt.pred"), labelInput("maxdepth"), 15, width = "100%",min = 0, max = 30, step = 1)),
@@ -103,7 +105,7 @@ mod_cross_validation_ui <- function(id){
                    style = "display:block",withLoader(verbatimTextOutput(ns("txt_cv")), 
                                                       type = "html", loader = "loader4")),br(),br()),
       tabPanel(title = p(labelInput("indices"),class = "wrapper-tag"), value = "tabcvcvIndices3",
-               div(col_4(div(id = ns("row"), shiny::h5(style = "float:left;margin-top: 15px;", labelInput("selectCat"),class = "wrapper-tag"),
+               div(col_4(div(id = ns("row"), shiny::h5(style = "float:left;margin-top: 15px;", labelInput("selectInd"),class = "wrapper-tag"),
                              tags$div(class="multiple-select-var",
                                       selectInput(inputId = ns("cvcv_glo"),label = NULL,
                                                   choices =  "", width = "100%")))),
@@ -237,7 +239,8 @@ mod_cross_validation_server <- function(input, output, session, updateData, code
                                                         data  = ttraining,
                                                         mtry  = params$mtry,
                                                         ntree = params$ntree,
-                                                        importance = TRUE)},
+                                                        importance = TRUE,
+                                                        parms   = list(split = params$tipo_rf))},
                                    "bl"    = {
                                      train.gbm(var_,
                                                data         = ttraining, 
@@ -404,6 +407,7 @@ mod_cross_validation_server <- function(input, output, session, updateData, code
       maxdepth_dt  <-  input$maxdepth.dt.pred 
       mtry         <-  input$mtry.rf.pred 
       ntree        <-  input$ntree.rf.pred 
+      tipo_rf      <-  input$split.rf.pred 
       scal_svm     <-  input$switch.scale.svm.pred 
       kernel_svm   <-  input$kernel.svm.pred 
       tipo_xgb     <-  input$boosterXgb.pred 
@@ -436,7 +440,7 @@ mod_cross_validation_server <- function(input, output, session, updateData, code
                 capas.np    = capas.np,   scal_rlr    = scal_rlr,    alpha        = alpha, 
                 iter        = iter,       maxdepth_b  = maxdepth_b,  minsplit_b   = minsplit_b, 
                 coeflearn_b = coeflearn_b,scal_rd     = scal_rd,     kernel_rd    = kernel_rd, 
-                ncomp_rd    = ncomp_rd))
+                ncomp_rd    = ncomp_rd,   tipo_rf     = tipo_rf))
   }
   
   
