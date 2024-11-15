@@ -202,20 +202,13 @@ mod_ind_nuevos_server <- function(input, output, session, newCases, updateData2,
                         },
                         
                         boost = {
-                          if(!is.null(calibrate_boosting(train))){
-                            n.trees      <- isolate(input$iter.boosting.pred)
-                            distribution <- isolate(input$tipo_boosting)
-                            shrinkage    <- isolate(input$shrinkage_boosting)
-                            gen.code     <- codeBoost(variable, n.trees, distribution, shrinkage)
-                            isolate(codedioma$code <- append(codedioma$code,  paste0(sub, gen.code)))
-                            isolate(modelo <- boosting_model(train,variable, n.trees, distribution, shrinkage))
-                            isolate(modelo)
-                            
-                          }
-                          else{
-                            showNotification(tr("ErrorBsize"), duration = 10, type = "error")
-                            NULL
-                          }
+                          n.trees      <- isolate(input$iter.boosting.pred)
+                          distribution <- isolate(input$tipo_boosting)
+                          shrinkage    <- isolate(input$shrinkage_boosting)
+                          gen.code     <- codeBoost(variable, n.trees, distribution, shrinkage)
+                          isolate(codedioma$code <- append(codedioma$code,  paste0(sub, gen.code)))
+                          modelo <- traineR::train.gbm(as.formula(var), data = datos, distribution = k, n.trees = n.trees, shrinkage = shrinkage)
+                          isolate(modelo)
                         },
                         nn    = {
                           threshold  <- isolate(input$threshold.nn.pred)
@@ -247,10 +240,11 @@ mod_ind_nuevos_server <- function(input, output, session, newCases, updateData2,
                           isolate(modelo)
                         },
                         rlr    = {
+                          
                           scales <- isolate(input$switch.scale.rlr.pred)
                           alpha  <- isolate(input$alpha.rlr.pred)
-                          isolate(modelo <- rlr_model(data = train, variable.pred = variable,
-                                                       alpha = alpha, standardize =  as.logical(scales)))
+                          modelo <- train.glmnet(as.formula(var), data = train, standardize = as.logical(scales), alpha = k, family = "gaussian")
+                          
                           gen.code <- codeRlr(variable, alpha,  as.logical(scales))
                           isolate(codedioma$code <- append(codedioma$code,  paste0(sub, gen.code)))
                           isolate(modelo)
@@ -258,23 +252,34 @@ mod_ind_nuevos_server <- function(input, output, session, newCases, updateData2,
                         
                         rd = {
                           modo.rd  <- isolate(input$mode_rd)
-                          scales   <- as.logical(isolate(input$switch.scale.rd.pred))
-                          gen.code <- codeRd(variable,modo.rd, scales)
-                          isolate(modelo   <- rd_model(train, variable, modo.rd, scales))
-                          comps <- isolate(input$ncomp_rd)
-                          ncomp <- NULL
-                          comps <- isolate(input$ncomp_rd)
-                          if (as.logical(isolate(input$permitir_ncomp)) && !is.na(comps)) {
-                            if(comps >= 1 && comps <= ncol(train)){
-                              ncomp <- comps
+                          scale    <- as.logical(isolate(input$switch.scale.rd.pred))
+                          gen.code <- codeRd(variable, modo.rd, scale)
+                          ncomp <- isolate(input$ncomp_rd)
+                          ncompdef <- as.logical(isolate(input$permitir_ncomp))
+                          if(ncompdef) {
+                            if(modo.rd == "ACP") {
+                              modelo <- pcr(
+                                formula, ncomp = ncomp, data = datos,
+                                scale = scale, validation = 'CV')
+                            } else {
+                              modelo <- plsr(
+                                formula, ncomp = ncomp, data = datos,
+                                scale = scale, validation = 'CV')
+                            }
+                          } else {
+                            if(modo.rd == "ACP") {
+                              modelo <- pcr(
+                                formula, data = datos,
+                                scale = scale, validation = 'CV')
+                            } else {
+                              modelo <- pcr(
+                                formula, data = datos,
+                                scale = scale, validation = 'CV')
                             }
                           }
-                          if(is.null(ncomp)){
-                            ncomp <- modelo$optimal.n.comp
-                            updateNumericInput(session,"ncomp_rd", value = ncomp)
-                          }
-                          isolate(modelo$ncomp_rd <- ncomp)
-                          isolate(codedioma$code <- append(codedioma$code,  paste0(sub, gen.code)))
+                          
+                          optimal.ncomp <- which.min(RMSEP(modelo)$val[1, 1, ]) - 1
+                          isolate(modelo$optimal.ncomp <- optimal.ncomp)
                           isolate(modelo)
                         }
       )
@@ -473,12 +478,13 @@ mod_ind_nuevos_server <- function(input, output, session, newCases, updateData2,
       tryCatch({
         if(sel == "svm")
           pred                <- predict(model, test[,-which(colnames(test) == vari)])
-        if(sel == "rd")
-          pred                <- rd_prediction(model, test, isolate(input$ncomp_rd))
+        if(sel == "rd") {
+          ncomp <- model$optimal.ncomp
+          auxp  <- predict(model, test, ncomp = ncomp)
+          pred  <- list(prediction = auxp[, , 1], var.pred = variable)
+        }
         if(sel == "rlr")
-          pred                <- rlr_prediction(model, 
-                                                test, 
-                                                vari)
+          pred <- predict(model, test)
         if(sel %not_in%  c("rlr", "svm", "rd") )
           pred                <- predict(model, test)
         

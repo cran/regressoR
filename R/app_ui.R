@@ -3,6 +3,8 @@
 #' @param request Internal parameter for `{shiny}`.
 #' DO NOT REMOVE.
 #' @import shiny
+#' @import loadeR
+#' @import traineR
 #' @import rlang
 #' @import glmnet
 #' @import shinyAce
@@ -11,10 +13,12 @@
 #' @import echarts4r
 #' @import shinycustomloader
 #' @import htmltools
+#' @import gbm
+#' @importFrom psych pairs.panels
 #' @importFrom utils head read.table write.csv
 #' @importFrom grDevices adjustcolor hcl
 #' @importFrom shinydashboardPlus dashboardPage dashboardHeader dashboardSidebar
-#' @importFrom graphics hist abline lines pairs par points polygon rect smoothScatter strwidth text
+#' @importFrom graphics hist abline lines pairs par points polygon rect smoothScatter strwidth text identify
 #' @importFrom DT tableHeader formatStyle
 #' @importFrom pls pcr plsr MSEP RMSEP explvar R2 mvrValstats
 #' @rawNamespace import(shinydashboard, except = c(dashboardHeader,dashboardPage,dashboardSidebar))
@@ -27,38 +31,42 @@ app_ui <- function(request) {
   load.menu <- menuItem(labelInput("data"), tabName = "cargar", icon = icon("database"))
   
   
-  statistics.menu <- menuItem(labelInput("basico"), tabName = "parte1", icon = icon("square-poll-vertical"),
-                              menuSubItem(labelInput("resumen"), tabName = "resumen", icon = icon("sort-numeric-down")),
-                              menuSubItem(labelInput("normalidad"), tabName = "normalidad", icon = icon("chart-bar")),
-                              menuSubItem(labelInput("dispersion"), tabName = "dispersion", icon = icon("chart-line")),
-                              menuSubItem(labelInput("distribucion"), tabName = "distribucion", icon = icon("chart-area")),
-                              menuSubItem(labelInput("correlacion"), tabName = "correlacion", icon = icon("table")),
-                              menuItem(labelInput("poderpred"), tabName = "poderPred", icon = icon("rocket")))
+  statistics.menu <- menuItem(
+    labelInput("basico"), tabName = "exploratorio", icon = icon("square-poll-vertical"),
+    menuSubItem(labelInput("resumen"), tabName = "resumen", icon = icon("sort-numeric-down")),
+    menuSubItem(labelInput("normalidad"), tabName = "normalidad", icon = icon("chart-bar")),
+    menuSubItem(labelInput("dispersion"), tabName = "dispersion", icon = icon("chart-line")),
+    menuSubItem(labelInput("distribucion"), tabName = "distribucion", icon = icon("chart-area")),
+    menuSubItem(labelInput("correlacion"), tabName = "correlacion", icon = icon("table")),
+    menuItem(labelInput("poderpred"), tabName = "poderPred", icon = icon("rocket"))
+  )
   
-  supervised.learning.menu    <- menuItem(labelInput("tt"), tabName = "parte2", icon = icon("th-list"),
-                                          menuSubItem(labelInput("rl"),tabName = "rl",icon = icon("chart-line")),
-                                          menuSubItem(labelInput("rlr"),tabName = "rlr",icon = icon("wave-square")),
-                                          menuSubItem(labelInput("dt"),tabName = "dt",icon = icon("tree")),
-                                          menuSubItem(labelInput("rf"),tabName = "rf",icon = icon("sitemap")),
-                                          menuSubItem(labelInput("boost"),tabName = "boosting",icon = icon("superscript")),
-                                          menuSubItem(labelInput("knn"),tabName = "knn",icon = icon("dot-circle")),
-                                          menuSubItem(labelInput("svm"),tabName = "svm",icon = icon("vector-square")),
-                                          menuSubItem(labelInput("rd"), tabName = "rd",icon = icon("chart-pie")),
-                                          menuSubItem(labelInput("nn"),tabName = "nn",icon = icon("brain")),
-                                          menuSubItem(labelInput("comparacion"),tabName = "comparar",icon = icon("balance-scale")),
-                                          menuSubItem(labelInput("varError"),tabName = "varerr",icon = icon("triangle-exclamation")))
+  supervised.learning.menu    <- menuItem(
+    labelInput("tt"), tabName = "TrainTest", icon = icon("th-list"),
+    menuSubItem(labelInput("rl"),    tabName = "reg",   icon = icon("chart-line")),
+    menuSubItem(labelInput("rlr"),   tabName = "regp",  icon = icon("wave-square")),
+    menuSubItem(labelInput("dt"),    tabName = "tree",  icon = icon("tree")),
+    menuSubItem(labelInput("rf"),    tabName = "rndf",  icon = icon("sitemap")),
+    menuSubItem(labelInput("boost"), tabName = "boost", icon = icon("superscript")),
+    menuSubItem(labelInput("knn"),   tabName = "knn",   icon = icon("dot-circle")),
+    menuSubItem(labelInput("svm"),   tabName = "svm",   icon = icon("vector-square")),
+    menuSubItem(labelInput("rd"),    tabName = "rdim",  icon = icon("chart-pie")),
+    menuSubItem(labelInput("nn"),    tabName = "nnet",  icon = icon("brain")))
   
-  calibracion.menu    <- menuItem(labelInput("calibracion"), tabName = "calibracion", icon = icon("gears"),
-                                          menuSubItem(labelInput("rl"),tabName = "cv_rl",icon = icon("chart-line")),
-                                          menuSubItem(labelInput("rlr"),tabName = "cv_rlr",icon = icon("wave-square")),
-                                          menuSubItem(labelInput("dtl"),tabName = "cv_dt",icon = icon("tree")),
-                                          menuSubItem(labelInput("rfl"),tabName = "cv_rf",icon = icon("sitemap")),
-                                          menuSubItem(labelInput("bl"),tabName = "cv_boosting",icon = icon("superscript")),
-                                          menuSubItem(labelInput("knnl"),tabName = "cv_knn",icon = icon("dot-circle")),
-                                          menuSubItem(labelInput("svml"),tabName = "cv_svm",icon = icon("vector-square")),
-                                          menuSubItem(labelInput("rd"), tabName = "cv_rd",icon = icon("chart-pie")))
+  calibracion.menu <- menuItem(
+    labelInput("calibracion"), tabName = "cv", icon = icon("gears"),
+    menuSubItem(labelInput("rl"),   tabName = "cv_reg",   icon = icon("chart-line")),
+    menuSubItem(labelInput("rlr"),  tabName = "cv_regp",  icon = icon("wave-square")),
+    menuSubItem(labelInput("dtl"),  tabName = "cv_tree",  icon = icon("tree")),
+    menuSubItem(labelInput("rfl"),  tabName = "cv_rndf",  icon = icon("sitemap")),
+    menuSubItem(labelInput("bl"),   tabName = "cv_boost", icon = icon("superscript")),
+    menuSubItem(labelInput("knnl"), tabName = "cv_knn",   icon = icon("dot-circle")),
+    menuSubItem(labelInput("svml"), tabName = "cv_svm",   icon = icon("vector-square")),
+    menuSubItem(labelInput("rd"),   tabName = "cv_rdim",  icon = icon("chart-pie")))
   
-  cross.val.menu    <- menuItem(labelInput("seleModel"), tabName = "cv_cv", icon = icon("laptop-code"))
+  
+  
+  cross.val.menu <- menuItem(labelInput("comparacion"), tabName = "evaluar", icon = icon("balance-scale"))
   
   new.prediction.menu <- menuItem(labelInput("predicnuevos"), tabName = "predNuevos", icon = icon("table"))
   
@@ -80,11 +88,11 @@ app_ui <- function(request) {
   
   #Los sliderInput y colourpicker por un motivo imprevisto se tienen que inicializar
   #De lo contrario no se van a mostrar en algunas partes de la interfaz
-  init.inputs <- tags$div(style = "display:none;",
-                          sliderInput(inputId = "aux", min = 2, value = 2,
-                                      label = "Cantidad de Clusters", max = 10),
-                          colourInput(
-                            "auxColor", NULL, value =  "red", allowTransparent = T))
+  init.inputs <- tags$div(
+    style = "display:none;", 
+    sliderInput("auxs", min = 2, value = 2, label = "auxs", max = 10),
+    colourInput("auxc", NULL, value =  "red")
+  )
   
   # The side menu
   mi.menu <- sidebarMenu(id = "principal",
@@ -150,62 +158,35 @@ app_ui <- function(request) {
                               loadeR::mod_correlacion_ui("correlacion_ui_1")),
                       tabItem(tabName = "poderPred",
                               mod_Predictive_Power_ui("Predictive_Power_ui_1")),
-                      tabItem(tabName = "rl",
-                              mod_l_regression_ui("l_regression_ui_1")),
-                      tabItem(tabName = "rlr",
-                              mod_penalized_l_r_ui("penalized_l_r_ui_1")),
-                      tabItem(tabName = "dt",
-                              mod_regression_trees_ui("regression_trees_ui_1")),
-                      tabItem(tabName = "rf",
-                              mod_r_forest_ui("r_forest_ui_1")),
-                      tabItem(tabName = "boosting",
-                              mod_boosting_ui("boosting_ui_1")),
-                      tabItem(tabName = "knn",  
-                              mod_KNN_ui("KNN_ui_1")),
-                      tabItem(tabName = "svm",  
-                              mod_SVM_ui("SVM_ui_1")),
-                      tabItem(tabName = "rd",  
-                              mod_dimension_reduction_ui("dimension_reduction_ui_1")),
-                      tabItem(tabName = "nn",  
-                              mod_neural_net_ui("neural_net_ui_1")),  
+                      
+                      tabItem(tabName = "reg",   mod_train_test_ui("tt_reg_ui", "reg")),
+                      tabItem(tabName = "regp",  mod_train_test_ui("tt_regp_ui", "regp")),
+                      tabItem(tabName = "tree",  mod_train_test_ui("tt_tree_ui", "tree")),
+                      tabItem(tabName = "rndf",  mod_train_test_ui("tt_rndf_ui", "rndf")),
+                      tabItem(tabName = "boost", mod_train_test_ui("tt_boost_ui", "boost")),
+                      tabItem(tabName = "knn",   mod_train_test_ui("tt_knn_ui", "knn")),   
+                      tabItem(tabName = "svm",   mod_train_test_ui("tt_svm_ui", "svm")),
+                      tabItem(tabName = "rdim",  mod_train_test_ui("tt_rdim_ui", "rdim")),
+                      tabItem(tabName = "nnet",  mod_train_test_ui("tt_nnet_ui", "nnet")),
 
                       ############### Validación Cruzada ############### 
+                      tabItem(tabName = "cv_reg",   mod_cross_val_ui("cv_reg_ui", "reg")),
+                      tabItem(tabName = "cv_regp",  mod_cross_val_ui("cv_regp_ui", "regp")),
+                      tabItem(tabName = "cv_tree",  mod_cross_val_ui("cv_tree_ui", "tree")),
+                      tabItem(tabName = "cv_rndf",  mod_cross_val_ui("cv_rndf_ui", "rndf")),
+                      tabItem(tabName = "cv_boost", mod_cross_val_ui("cv_boost_ui", "boost")),
+                      tabItem(tabName = "cv_knn",   mod_cross_val_ui("cv_knn_ui", "knn")),   
+                      tabItem(tabName = "cv_svm",   mod_cross_val_ui("cv_svm_ui", "svm")),
+                      tabItem(tabName = "cv_rdim",  mod_cross_val_ui("cv_rdim_ui", "rdim")),
                       
-                      tabItem(tabName = "cv_knn", 
-                              mod_cv_knn_ui("cv_knn_ui_1")),
+                      # Evaluación de Modelos
+                      tabItem(tabName = "evaluar", mod_evaluacion_ui("evaluacion_ui_1")),
                       
-                      tabItem(tabName = "cv_svm", 
-                              mod_cv_svm_ui("cv_svm_ui_1")),
+                      # Predicción Individuos Nuevos
+                      tabItem(tabName = "predNuevos", mod_ind_nuevos_ui("ind_nuevos_ui_1")),
                       
-                      tabItem(tabName = "cv_dt", 
-                              mod_cv_dt_ui("cv_dt_ui_1")),
-                      
-                      tabItem(tabName = "cv_rf", 
-                              mod_cv_rf_ui("cv_rf_ui_1")),
-
-                      tabItem(tabName = "cv_boosting", 
-                              mod_cv_boosting_ui("cv_boosting_ui_1")),
-                      
-                      tabItem(tabName = "cv_rlr", 
-                              mod_cv_rlr_ui("cv_rlr_ui_1")),
-                      
-                      tabItem(tabName = "cv_rd", 
-                              mod_cv_rd_ui("cv_rd_ui_1")),
-                      
-                      tabItem(tabName = "cv_rl", 
-                              mod_cv_rl_ui("cv_rl_ui_1")),
-                      
-                      tabItem(tabName = "cv_cv", 
-                              mod_cross_validation_ui("cross_validation_ui_1")),
-                      
-                      tabItem(tabName = "comparar",
-                              mod_comparacion_ui("comparacion_ui_1")),
-                      tabItem(tabName = "varerr", 
-                              mod_varerr_ui("varerr_ui_1")),   
-                      tabItem(tabName = "predNuevos",
-                              mod_ind_nuevos_ui("ind_nuevos_ui_1")),
-                      tabItem(tabName = "acercaDe",
-                              mod_information_page_ui("information_page_ui_1"))
+                      # Acerca De
+                      tabItem(tabName = "acercaDe", mod_information_page_ui("information_page_ui_1"))
                     )),
       shinydashboardPlus::dashboardControlbar(
         width = 500,

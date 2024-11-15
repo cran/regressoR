@@ -1,4 +1,4 @@
-#' general_indices
+#' general.indices
 #'
 #' @description calculates indices to measure accuracy of a model.
 #'
@@ -12,9 +12,9 @@
 #' real <- rnorm(45)
 #' prediction <- rnorm(45)
 #' model <- "KNN"
-#' general_indices(real, prediction)
+#' general.indices(real, prediction)
 #' 
-general_indices <- function(real, prediccion) {
+general.indices <- function(real, prediccion) {
   RMSE <- sqrt(sum((real - prediccion) ^ 2) / length(prediccion))
   MAE  <- sum(abs(real - prediccion)) / length(prediccion)
   RE   <- sum(abs(real - prediccion)) / sum(abs(real)) * 100
@@ -62,8 +62,6 @@ summary_indices <- function(data){
        "3Q"  = quantile(data, prob=c(0.75)),
        "Max" = max(data))
 }
-
-
 
 tabla.varpred.summary <- function(summary.var, decimals = NULL, idioma = "es"){
   df <- as.data.frame(summary.var)

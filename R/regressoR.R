@@ -12,12 +12,15 @@
 #' \tabular{ll}{
 #' Package: \tab regressoR\cr
 #' Type: \tab Package\cr
-#' Version: \tab 3.0.2\cr
-#' Date: \tab 2023-06-28\cr
+#' Version: \tab 4.0.3\cr
+#' Date: \tab 2024-11-15\cr
 #' License: \tab GPL (>=2)\cr
 #' }
 #' @keywords package
-#' @docType package
+"_PACKAGE"
 
 NULL
-utils::globalVariables(c( "name", "value", "color"))
+utils::globalVariables(c(
+  "name", "value", "color", "vare", "x", "y", "X", "Modelo", "RMSE", "lower",
+  "upper", "ID", "nombre", "importancia"
+))

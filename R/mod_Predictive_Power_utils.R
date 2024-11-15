@@ -1,11 +1,4 @@
-#' pairs_power
-#' @description Generate a pair chart
-#' 
-#' @param data A DataFrame
-#' @param decimals Number of numbers after the decimal point.
-#'
-#' @export
-#'
+# pairs_power
 pairs_power <- function(data, decimals = 2){
   pairs.panels(var.numericas(data), digits = decimals, bg='black', ellipses=FALSE, smooth=FALSE,
                lm=TRUE, cex.cor = 0.5, cex.main=0.1, pch=20, main='',

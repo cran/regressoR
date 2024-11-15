@@ -76,13 +76,12 @@ tr <- function(text, idioma = "es") {
     elem
   }, USE.NAMES = F)
 }
-# Función para generar diccionario.
-#
+# # Función para generar diccionario.
 # crear.traslation <- function() {
 #    library(plyr)
-#    archivo <- read.table("diccionario.csv", header = TRUE, sep = ";", as.is = TRUE)
+#    archivo <- read.table("inst/app/lang/diccionario.csv", header = TRUE, sep = ";", as.is = TRUE)
 #    translation <- dlply(archivo , .(key), function(s) key = as.list(s))
 # 
-#    save(translation, file = "translation.bin")
+#    save(translation, file = "inst/app/lang/translation.bin")
 #  }
 

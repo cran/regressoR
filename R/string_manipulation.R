@@ -1,5 +1,4 @@
 # Updates the labelInputs that the language changes
-
 #' exe
 #' 
 #' @description concat and execute a text in R.
