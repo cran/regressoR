@@ -12,8 +12,8 @@
 #' \tabular{ll}{
 #' Package: \tab regressoR\cr
 #' Type: \tab Package\cr
-#' Version: \tab 4.0.3\cr
-#' Date: \tab 2024-11-15\cr
+#' Version: \tab 4.0.4\cr
+#' Date: \tab 2025-05-27\cr
 #' License: \tab GPL (>=2)\cr
 #' }
 #' @keywords package

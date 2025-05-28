@@ -1,4 +1,4 @@
-5867f2f6af40ac6263d7c36d9737a350 *DESCRIPTION
+4af6a1985afbf9982497ea9891c74bff *DESCRIPTION
 13e03d3ccd94fa5df152f8cf65c24897 *NAMESPACE
 e81a634e38b655cc4ded000e22a5de7e *NEWS.md
 580ef710eda9e5ad85116854022a2212 *R/app_config.R
@@ -17,7 +17,7 @@ f00c0db68a0091fec51d268bd4d2fbb5 *R/mod_cross_val.R
 960409b1f0f55c88173539af2dece5f0 *R/mod_evaluacion.R
 acd0d103d3975fba85c68e8e3e5537a0 *R/mod_ind_nuevos.R
 b138d6b784d33cb979ec7d746631dbcd *R/mod_ind_nuevos_utils.R
-5dab1a642764431e6704cbf89d44287e *R/mod_information_page.R
+93684b1fa71273c937036b3c36a77fc2 *R/mod_information_page.R
 d4c7f0cb27653641b2d95122ca3687e5 *R/mod_model_boost_fct.R
 aa423d12b7cdfe36e4db722f2797a667 *R/mod_model_boost_utils.R
 29a9c4d37221cea3a0bf67caf929c8ef *R/mod_model_nnet_utils.R
@@ -30,7 +30,7 @@ db2826b0d1226b5f91fd9959b7e63f0c *R/mod_model_tree_utils.R
 c5d0399f3a54aeb0fb49865dedab9200 *R/mod_models_utils.R
 e19d59a1a68561349b85c75201d2f3f5 *R/mod_train_test.R
 09a7ba34048e5dce77b6905979008154 *R/mod_varerr.R
-76f22ec22e23cbde1c2d90dc0a60356c *R/regressoR.R
+6a8b2e1efeee98738607946cc45565d7 *R/regressoR.R
 516ed15c92c26441d7f392bf8238257f *R/run_app.R
 543bc9843a74381f9d73c6e04b2a47c0 *R/string_manipulation.R
 611c04a875edf0c3f6a80ff1e794f38f *R/utils_global.R
@@ -53,7 +53,7 @@ b459bcf0fba20f6a664ffd23c4b28f3d *inst/app/www/regressor_inputs.js
 fc51d5417cf72c30637ca40f0fc57bd4 *inst/app/www/regressor_options.js
 1fc634b32950a73212a8567216ac6bf3 *inst/app/www/script_regressor.js
 ef664e5c646d5f43f65d568db5b6ab80 *inst/app/www/style_regressor.css
-b3f0782417bfe250afe162410b19a153 *inst/golem-config.yml
+7576994e5d8413d1d1174ed5545d1690 *inst/golem-config.yml
 9eb3e89bc7f2d170e8f9feafd07a0383 *inst/rstudio/addins.dcf
 aacdc34e75fd97c98a1f4ff6d66ec715 *man/as_string_c.Rd
 0e90cb9412397c5ac172178e8babc645 *man/e.rdim.rmse.Rd
